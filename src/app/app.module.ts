@@ -25,6 +25,10 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { SectionsComponent } from './sections/sections.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormComponent } from './form/form.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { VideosComponent } from './videos/videos.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import { FormComponent } from './form/form.component';
     CatalogComponent,
     SectionsComponent,
     FooterComponent,
-    FormComponent
+    FormComponent,
+    ArticlesComponent,
+    GalleryComponent,
+    VideosComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
