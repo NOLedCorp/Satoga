@@ -19,13 +19,25 @@ import { LoadComponent } from './load/load.component';
 import { UserService } from './services/user.service';
 import { LoadService } from './services/load.service';
 import { AdminService } from './services/admin.service';
+import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
+import { CatalogComponent } from './catalog/catalog.component';
+import { SectionsComponent } from './sections/sections.component';
+import { FooterComponent } from './footer/footer.component';
+import { FormComponent } from './form/form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadComponent,
-    ModalComponent
+    ModalComponent,
+    MenuComponent,
+    HomeComponent,
+    CatalogComponent,
+    SectionsComponent,
+    FooterComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

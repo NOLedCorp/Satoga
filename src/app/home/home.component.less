@@ -1,0 +1,85 @@
+@import "../../colors.less";
+.head{
+    padding-top: 50px;
+    height: 60vh;
+    display: flex;
+    &>div{
+        height: 100%;
+        display: flex;
+        position: relative;
+        
+        
+    }
+    .head-left{
+        z-index: 10;
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        
+        p:first-of-type{
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 35px;
+            margin-right: -200px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        p:nth-of-type(2){
+            font-size: 15px;
+            font-weight: 500;
+            margin-top: 100px;
+            position: relative;
+            &:after{
+                content: '';
+                display: block;
+                position: absolute;
+                top: calc(100% + 10px);
+                height: 5px;
+                width: 30px;
+                background-color: @gray;
+            }
+        }
+
+        span.outlist-item{
+            font-weight: 500;
+            margin-right: 20px;
+            position: relative;
+            font-size: 18px;
+            &:not(:last-child):after{
+                content: "•";
+                display: block;
+                position: absolute;
+                right: -12px;
+                top:1px;
+            }
+        }
+    }
+    .head-right{
+        align-items: center;
+        position: relative;
+        width: 55%;
+        img{
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        &:before{
+            content: '';
+            display: block;
+            position: absolute;
+            height: 60vh;
+            width: 60vh;
+            border-radius: 50%;
+            top:0;
+            left: 0;
+            background-color: @light-gray;
+        }
+
+    }
+}
+
+.catalog{
+    padding: 60px 0;
+}

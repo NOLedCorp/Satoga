@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./colors.less";
+html{
+    overflow-x: hidden;
+}
+
+
+*{
+    box-sizing: border-box;
+    &:focus{
+        outline: none;
+    }
+}
+
+.btns{
+    margin: 30px 0;
+    .btn:first-child{
+        margin-right: 15px;
+    }
+}
+
+.btn{
+    border-radius: 0;
+
+}
+
+.btn-success{
+    background-color: @green;
+}
+.btn-secondary{
+    background-color: @light-gray;
+    border-color: @light-gray;
+    color: @dark-gray;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

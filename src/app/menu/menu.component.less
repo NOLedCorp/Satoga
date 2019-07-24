@@ -1,0 +1,32 @@
+@import "../../colors.less";
+.menu{
+    display: flex;
+    .item{
+        margin-right: 60px;
+        color: @gray;
+        position: relative;
+        cursor: pointer;
+        
+
+        &:after{
+            content: '';
+            display: block;
+            transition: 0.3s;
+            width: 0;
+            max-width: 0;
+            position: absolute;
+            bottom: -1px;
+            height: 1px;
+            background-color: @dark-gray;
+        }
+
+        &.active, &:hover{
+            color: @dark-gray;
+            &:after{
+                width: 100%;
+                max-width: 1000px;
+            }
+
+        }
+    }
+}

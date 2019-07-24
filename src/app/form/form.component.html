@@ -1,0 +1,23 @@
+<form [formGroup]="userForm">
+    <h3 class="text-center mb-4" style="font-weight:400">Отправление заявки</h3>
+    <div class="form-group">
+      <input [ngClass]="{'border-danger':(submitted && f.Name.errors)}" formControlName="Name" class="form-control" id="na" placeholder="Ваше имя">
+      <small  class="form-text text-danger" *ngIf="submitted && f.Name.errors && f.Name.errors.required">Введите Ваше имя</small>
+    </div>
+    <div class="form-group">
+        <input [ngClass]="{'border-danger':(submitted && f.Email.errors)}" formControlName="Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ваш email">
+        <small  class="form-text text-danger" *ngIf="submitted && f.Email.errors && f.Email.errors.required">Введите email</small>
+        <small id="emailHelp1" class="form-text text-danger" *ngIf="submitted && f.Email.errors && f.Email.errors.email">Некорректный email</small>
+    </div>
+    <!-- <div class="form-group">
+        <label for="exampleInputPhone1" [ngClass]="{'text-danger':(submitted && f.Phone.errors)}">Телефон</label>
+        <input [ngClass]="{'border-danger':(submitted && f.Phone.errors)}" formControlName="Phone" type="tel" pattern="\d[0-9]{5,}" class="form-control" id="exampleInputPhone1"  placeholder="Ваш  телефон">
+        <small  class="form-text text-danger" *ngIf="submitted && f.Phone.errors && f.Phone.errors.required">Введите телефон</small>
+        <small  class="form-text text-danger" *ngIf="submitted && f.Phone.errors && f.Phone.errors.pattern">Некорректный телефон</small>
+    </div> -->
+    <div class="form-group">
+        <textarea formControlName="Description" class="form-control" rows="5" id="DES" placeholder="Описание"></textarea>
+    </div>
+    <button class="btn btn-success" (click)="send()">Отправить</button>
+  </form>
+  

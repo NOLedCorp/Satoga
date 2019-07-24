@@ -1,0 +1,33 @@
+@import "../../colors.less";
+.flex-container{
+    .item{
+        margin:20px 5px;
+        display: flex;
+        flex-direction: column;
+        min-width: 200px;
+        align-items: flex-start;
+        width: 25%; 
+        img{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        h3{
+            font-weight: 300;
+            font-size: 20px;
+            position: relative;
+            margin-bottom: 30px;
+            &:after{
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: -5px;
+                height: 1px;
+                width: 40px;
+                background-color: @gray;
+            }
+        }
+        .price{
+            margin-bottom: 25px;
+        }
+    }
+}
