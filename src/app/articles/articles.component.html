@@ -1,3 +1,13 @@
-<p>
-  articles works!
-</p>
+
+<div class="container p-0">
+  <h3>Статьи</h3>
+  <div class="flex-container">
+    <div class="item" *ngFor="let i of articles">
+      <img src="{{i.Photo}}" alt="{{i.Name}}">
+      <h3>{{i.Name}}</h3>
+      <span><i class="fas fa-user"></i> {{i.Author}}</span>
+      <div class="eye"><i class="far fa-eye"></i></div>
+    </div>
+  </div>
+  
+</div>

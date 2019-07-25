@@ -1,0 +1,35 @@
+@import "../catalog/catalog.component.less";
+
+.item{
+    position: relative;
+    border-radius: 10px;
+    padding: 10px;
+    h3{
+        margin-bottom: 5px !important;
+    }
+    span, i{
+        color:@gray;
+        font-size: 14px;
+    }
+    .eye{
+        position: absolute;
+        opacity: 0;
+        transition: 0.3s;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        background-color: @trans-dark;
+        width: 100%;height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 10px black;
+        i{
+            color:@light-gray;
+            font-size: 40px;
+        }
+        &:hover{
+            opacity: 1;
+        }
+    }
+}

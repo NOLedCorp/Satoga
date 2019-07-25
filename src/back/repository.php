@@ -6,41 +6,8 @@ class DataBase {
     public function __construct()
     {
         //$this->db = new PDO('mysql:host=localhost;dbname=myblog;charset=UTF8','nlc','12345');
-        $this->db = new PDO('mysql:host=localhost;dbname=nomokoiw_poff;charset=UTF8','nomokoiw_poff','ms87%L39');
+        $this->db = new PDO('mysql:host=localhost;dbname=nomokoiw_stg;charset=UTF8','nomokoiw_stg','ms87%L39');
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-    }
-
-    public function uploadFile($pid, $files, $t){
-        $img=$this->getImage($pid, $t);
-        if($img){
-            $this->removeFile($img);
-        }
-        $url = "http://client.nomokoiw.beget.tech/progoff/";
-        $n = basename($t."_".$pid."_".$files['Data']['name']);
-        $tid=ucfirst($t)."Id";
-        $t .="s";
-        $d = "Files/$n";
-        if(file_exists("Files")){
-            
-            if(move_uploaded_file($files['Data']['tmp_name'], $d)){
-                $s = $this->db->prepare("UPDATE $t SET Image=? WHERE $tid=?");
-                $s->execute(array($url.$d, $pid));
-                return($url.$d);
-            }else{
-                return($_FILES['Data']['tmp_name']);
-            }
-        }else{
-            mkdir("Files");
-            if(move_uploaded_file($files['Data']['tmp_name'], $d)){
-                $s = $this->db->prepare("UPDATE $t SET Image=? WHERE $tid=?");
-                $s->execute(array($url.$d, $pid));
-                return($url.$d);
-            }else{
-                return($_FILES['Data']['tmp_name']);
-            }
-        }
-        
-        return false;
     }
 
     private function genInsertQuery($ins, $t){
@@ -58,96 +25,56 @@ class DataBase {
         return $res;
         
     }
-    private function genUpdateQuery($keys, $values, $t, $id){
-        $res = array('UPDATE '.$t.' SET ',array());
-        $q = '';
-        for ($i = 0; $i < count($keys); $i++) {
-            if($values[$i]!='now()'){
-                $res[0] = $res[0].$keys[$i].'=?, ';
-                $res[1][]=$values[$i];
-            }
-            else{
-                $res[0] = $res[0].$keys[$i].'=now(), ';
-            }
-            
-            
-        }
-        $res[0]=rtrim($res[0],', ');
-        $res[0]=$res[0].' WHERE '.rtrim($t,'s').'Id = '.$id;
-        
-        return $res;
-        
-    }
-    
-    private function removeFile($filelink){
-        $path = explode('vi/',$filelink);
-        unlink($path[1]);
-        
-    }
-    
-    public function getClients(){
-        $sth = $this->db->query("SELECT * FROM clients");
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'Client');
+
+    private function genSelectQuery($table){
+        $sth = $this->db->query("SELECT * FROM $table");
+        $table = rtrim(ucfirst($table),'s');
+        $sth->setFetchMode(PDO::FETCH_CLASS, $table);
         return $sth->fetchAll();
     }
-
-    public function getTeam(){
-        $sth = $this->db->query("SELECT * FROM mates");
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'Mate');
-        return $sth->fetchAll();
-    }
-
-    public function getSales(){
-        $sth = $this->db->query("SELECT * FROM sales");
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'Sale');
-        $sales = [];
-        while ($s = $sth->fetch()) {
-            $s->Services = $this->getSaleServs($s->Id);
-            $sales[] = $s;
-        }
-        return $sales;
-    }
-
-    public function getJobs(){
-        $sth = $this->db->query("SELECT * FROM jobs");
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'Job');
-        $jobs = [];
+    
+    public function getSections(){
+        $sth = $this->db->query("SELECT * FROM sections");
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'Section');
+        $sections = [];
         while ($j = $sth->fetch()) {
-            $j->Requirements = $this->getJobReqs($j->Id);
-            $jobs[] = $j;
+            $j->Goods = $this->getSectionGoods($j->Id);
+            $sections[] = $j;
         }
-        return $jobs;
+        return $sections;
+    }
+
+    public function getGoods(){
+        return genSelectQuery('goods');
+    }
+
+    public function getArticles(){
+        return genSelectQuery('articles');
+    }
+
+    public function getPhotoes(){
+        return genSelectQuery('photos');
+    }
+
+    public function getVideos(){
+        return genSelectQuery('videos');
     }
     
-    private function getSaleServs($sid){
-        $s = $this->db->prepare("SELECT ser.Id as Id, ser.Name as Name, ser.Description as Description, ser.Price as Price from (sales sale RIGHT join saleservice ss ON sale.Id = ss.SaleId) LEFT JOIN services ser ON ser.Id = ss.ServiceId WHERE sale.Id=?");
+    private function getSectionGoods($sid){
+        $s = $this->db->prepare("SELECT * FROM goods WHERE SectionId=?");
         $s->execute(array($sid));
-        $s->setFetchMode(PDO::FETCH_CLASS, 'Service');
+        $s->setFetchMode(PDO::FETCH_CLASS, 'Good');
         return $s->fetchAll();
     }
 
-    private function getJobReqs($jid){
-        $s = $this->db->prepare("SELECT req.Id as Id, req.Description as Description from (jobs job RIGHT join jobrequirement jr ON job.Id = jr.JobId) LEFT JOIN requirements req ON req.Id = jr.RequirementId WHERE job.Id=?");
-        $s->execute(array($jid));
-        $s->setFetchMode(PDO::FETCH_CLASS, 'Requirement');
-        return $s->fetchAll();
-    }
+    
 
-    public function addApp($app, $attachment){
+    public function addApp($app){
         $res = $this->genInsertQuery($app,"apps");
         $s = $this->db->prepare($res[0]);
         if($res[1][0]!=null){
             $s->execute($res[1]);
         }
-        if($attachment['Id']!='null'){
-            $attachment['AppId'] = $this->db->lastInsertId();
-            $res = $this->genInsertQuery($attachment,"attachments");
-            $s = $this->db->prepare($res[0]);
-            if($res[1][0]!=null){
-                $s->execute($res[1]);
-            }
-        }
-        
         
         return $this->db->lastInsertId();
     }

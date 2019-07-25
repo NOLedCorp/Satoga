@@ -4,7 +4,7 @@
         margin:20px 5px;
         display: flex;
         flex-direction: column;
-        min-width: 200px;
+        min-width: 250px;
         align-items: flex-start;
         width: 25%; 
         img{
@@ -16,14 +16,19 @@
             font-size: 20px;
             position: relative;
             margin-bottom: 30px;
+            cursor: pointer;
             &:after{
                 content: '';
                 display: block;
                 position: absolute;
+                transition: 0.3s;
                 bottom: -5px;
                 height: 1px;
                 width: 40px;
                 background-color: @gray;
+            }
+            &:hover:after{
+                width:100%;
             }
         }
         .price{

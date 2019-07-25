@@ -3,55 +3,35 @@ class BaseEntity{
     public $Id;
     public $Name;
     public $Description;
+    public $CreateDate;
 }
 
-class Client extends BaseEntity{
-    public $MainImage;
-    public $LeftImage;
-    public $RightImage;
-    public $Link;
-    public $Model;
-    public $Logo;
-    public $CreateDate;
-    public $LongDescription;
+class Section extends BaseEntity{
+    public $Photo;
+    public $Goods;
 }
     
-class Service extends BaseEntity{
-    public $Price;
+class Good extends BaseEntity{
+    public $SectionId;
+    public $Photo;
+    public $FullDescribtion;
 }
     
-class Job extends BaseEntity{
-    public $Requirements;
+class Article extends BaseEntity{
+    public $Photo;
+    public $Author;
+    public $GoodId;
+    public $Path;
 }
 
-class Mate extends BaseEntity{
-    public $Position;
-    public $VK;
-    public $Instagram;
-}
-
-class Sale extends BaseEntity{
-    public $Image;
-    public $Discount;
-
-    public $Services;
-}
-
-class Attachment{
+class Photo{
     public $Id;
-    public $AppId;
-    public $Type;
-  
-    public $Content;
+    public $Name;
+    public $GoodId;
+    public $Path;
 }
 
-class Requirement{
-    public $Id;
-    public $Description;
-}
-
-class Application extends BaseEntity{
-    public $Email;
-    public $CreateDate;
+class Video extends Photo{
+    public $Photo;
 }
 ?>

@@ -9,21 +9,24 @@ if(isset($_GET['Key']))
 {
     
     switch ($_GET['Key']) {
-        case 'get-clients':
-            echo json_encode($ctxt->getClients());
+        case 'get-sections':
+            echo json_encode($ctxt->getSections());
             break;
-        case 'get-team':
-            echo json_encode($ctxt->getTeam());
+        case 'get-goods':
+            echo json_encode($ctxt->getGoods());
             break;
-        case 'get-jobs':
-            echo json_encode($ctxt->getJobs());
+        case 'get-articles':
+            echo json_encode($ctxt->getArticles());
+            break;
+        case 'get-photoes':
+            echo json_encode($ctxt->getPhotoes());
+            break;
+        case 'get-videos':
+            echo json_encode($ctxt->getVideos());
             break;
         case 'add-app':
             $b = json_decode(file_get_contents('php://input'), true);
-            echo json_encode($ctxt->addApp($b['App'], $b['Attachment']));
-            break;
-        case 'get-sales':
-            echo json_encode($ctxt->getSales());
+            echo json_encode($ctxt->addApp($b));
             break;
         // case 'upload-file':
         //     $inp = json_decode(file_get_contents('php://input'), true);

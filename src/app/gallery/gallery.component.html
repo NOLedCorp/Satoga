@@ -1,3 +1,16 @@
-<p>
-  gallery works!
-</p>
+
+<div class="container p-0">
+  <h3>Фотогалерея</h3>
+  <div class="flex-container">
+    <div class="item" *ngFor="let i of photoes">
+      <div style="position: relative;">
+        <img src="{{i.Photo}}" alt="{{i.Name}}">
+        <div class="eye"><i class="far fa-eye"></i></div>
+      </div>
+      
+      <h3 class="mt-2">{{i.Name}}</h3>
+      
+    </div>
+  </div>
+  
+</div>
