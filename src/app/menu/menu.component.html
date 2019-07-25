@@ -1,7 +1,16 @@
-<div class="menu">
-  <div class="item" routerLink="catalog" routerLinkActive="active">Каталог</div>
-  <div class="item" routerLink="articles" routerLinkActive="active">Статьи</div>
-  <div class="item" routerLink="gallery" routerLinkActive="active">Галерея</div>
-  <div class="item" routerLink="videos" routerLinkActive="active">Видео</div>
-  <div class="item" routerLink="contacts" routerLinkActive="active">Контакты</div>
+<div style="position:relative" [ngClass]="{'active':show}">
+  <div class="open-btn" (click)="open()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="menu">
+  
+    <div class="item" routerLink="catalog" routerLinkActive="active">Каталог</div>
+    <div class="item" routerLink="articles" routerLinkActive="active">Статьи</div>
+    <div class="item" routerLink="gallery" routerLinkActive="active">Галерея</div>
+    <div class="item" routerLink="videos" routerLinkActive="active">Видео</div>
+    <div class="item" routerLink="contacts" routerLinkActive="active">Контакты</div>
+  </div>
 </div>
+

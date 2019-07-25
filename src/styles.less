@@ -2,6 +2,7 @@
 @import "./colors.less";
 html{
     overflow-x: hidden;
+    min-width: 300px;
 }
 
 
@@ -41,4 +42,14 @@ html{
 
 .header{
     margin-bottom: 35px;
+}
+
+
+
+@media (max-width:600px){
+    .flex-container{
+        .item{
+            width: 100% !important;
+        }
+    }
 }

@@ -3,7 +3,10 @@
 .footer{
     background-color: transparent !important;
     .footer-left{
-        width: 60%;
+        width: calc(100% - 300px);
+    }
+    .footer-right{
+        width: auto;
     }
     .form{
         box-shadow: none !important;
@@ -38,13 +41,30 @@
         }
         .img{
             border-radius: 50%;
+            min-width: 60px;
+            min-height: 60px;
             width: 60px;
             height: 60px;
+            
             background-image: url('../../assets/images/ava.jpg');
             background-position: 0 0;
             background-size: cover;
             background-repeat: no-repeat;
 
+        }
+    }
+}
+
+
+
+
+@media (max-width:400px){
+    .contact{
+        width: 100%;
+        margin-right: 0 !important;
+
+        i{
+            font-size: 25px !important;
         }
     }
 }

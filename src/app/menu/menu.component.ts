@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.less']
 })
 export class MenuComponent implements OnInit {
-
-  constructor() { }
+  show = false;
+  constructor(private router:Router) { }
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      if(this.show){
+        this.open();
+      }
+      
+     });
+  }
+
+  open(){
+    let html = document.getElementsByTagName('html')[0];
+    html.style.overflow = this.show?'unset':'hidden';
+    this.show = !this.show;
   }
 
 }

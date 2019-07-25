@@ -45,3 +45,31 @@
         }
     }
 }
+
+@media (max-width:768px){
+    .container{
+        flex-direction: column;
+        align-items: center;
+        h3{
+            font-size: 20px; 
+        }
+        &>*{
+            width: 100% !important;
+            justify-content: center !important;
+            .contacts{
+                justify-content: center;
+                .contact{
+                    width: 400px;
+                }
+
+                
+            }
+
+        }
+
+        .form{
+            box-shadow: none !important;
+            margin-top: 30px;
+        }
+    }
+}
