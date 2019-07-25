@@ -1,0 +1,50 @@
+@import "../footer/footer.component.less";
+
+.footer{
+    background-color: transparent !important;
+    .footer-left{
+        width: 60%;
+    }
+    .form{
+        box-shadow: none !important;
+        padding-top: 0 !important;
+    }
+    .contacts{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-top: 30px !important;
+    }
+    .contact{
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border:1px solid @trans-dark;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        i{
+            width: 50px;
+            margin-right: 8px;
+            font-size: 40px;
+            color:@gray;
+        }
+        a{
+            margin: 0 !important;
+        }
+    }
+    .ava{
+        span{
+            color: @gray;
+        }
+        .img{
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background-image: url('../../assets/images/ava.jpg');
+            background-position: 0 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+        }
+    }
+}
