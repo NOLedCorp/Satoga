@@ -3,7 +3,7 @@
   <h3 class="header">Фотогалерея</h3>
   <div class="flex-container">
     <div class="item" *ngFor="let i of photoes">
-      <div style="position: relative;">
+      <div style="position: relative;" (click)="close()">
         <img src="{{i.Photo}}" alt="{{i.Name}}">
         <div class="eye"><i class="far fa-eye"></i></div>
       </div>
@@ -16,4 +16,4 @@
 </div>
 
 
-<photo-viewer [items]="getPhotoes()"></photo-viewer>
+<photo-viewer *ngIf="show" (onClose)="close($event)" [items]="getPhotoes()"></photo-viewer>

@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { EventEmitter } from 'protractor';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'photo-viewer',
@@ -8,15 +7,17 @@ import { EventEmitter } from 'protractor';
 })
 export class PhotoViewerComponent implements OnInit {
   @Input() items:PhotoView[] = [];
-  @Output() close = new EventEmitter();
+  @Output() onClose = new EventEmitter<boolean>();
+  
   constructor() { }
 
   ngOnInit() {
   }
 
   closeViewer(){
-    this.close.emit('string');
+    this.onClose.emit(true);
   }
+  
 
 }
 

@@ -31,7 +31,9 @@ export class GalleryComponent implements OnInit {
       Photo: '../../assets/images/lozha.png',
       Name: 'Ложа для СКС | C-205 P'
     }
-  ]
+  ];
+
+  show = false;
   constructor() { }
 
   ngOnInit() {
@@ -39,6 +41,10 @@ export class GalleryComponent implements OnInit {
 
   getPhotoes(){
     return this.photoes.map(x => { return {Name: x.Name, Path: x.Photo}})
+  }
+
+  close(){
+    this.show = ! this.show;
   }
 
 }
