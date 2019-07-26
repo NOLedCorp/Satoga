@@ -29,6 +29,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { VideosComponent } from './videos/videos.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { PhotoViewerComponent } from './photo-viewer/photo-viewer.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ContactsComponent } from './contacts/contacts.component';
     ArticlesComponent,
     GalleryComponent,
     VideosComponent,
-    ContactsComponent
+    ContactsComponent,
+    PhotoViewerComponent
   ],
   imports: [
     BrowserModule,

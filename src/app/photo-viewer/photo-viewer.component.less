@@ -1,0 +1,50 @@
+@import "../../colors.less";
+
+.carousel{
+    position: fixed;
+    z-index: 1100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: @trans-darker;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color:white;
+    &>i{
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        border-radius: 50%;
+        transition: 0.3s;
+        background-color: transparent;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;align-items: center;
+        &:hover{
+            background-color: #fff;
+            color: #000;
+        }
+    }
+    .controls{
+        position: absolute;
+        bottom: 30px;
+        width: 100px;
+    }
+
+    .carousel-item{
+        max-height: 90vh;
+        p{
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        img{
+            max-width: 70vw;
+        }
+    }
+}

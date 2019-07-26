@@ -37,4 +37,8 @@ export class GalleryComponent implements OnInit {
   ngOnInit() {
   }
 
+  getPhotoes(){
+    return this.photoes.map(x => { return {Name: x.Name, Path: x.Photo}})
+  }
+
 }
