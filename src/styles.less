@@ -28,6 +28,40 @@ html{
 .btn-success{
     background-color: @green;
 }
+
+.btn-scss-lt{
+    background-color: transparent;
+    border: 1px solid @green;
+    color: black;
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 0;
+    &>*{
+        position: relative;
+        z-index: 10;
+        transition: 0.3s;
+    }
+    &:before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: @green;
+        transition: 0.3s;
+    }
+
+    &:hover{
+        &::before{
+            width: 100%;
+        }
+        &>*{
+            color: white;
+        }
+    }
+}
 .btn-secondary{
     background-color: @light-gray;
     border-color: @light-gray;
