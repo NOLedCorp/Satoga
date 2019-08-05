@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThrowStmt } from '@angular/compiler';
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: 'app-product',
@@ -12,6 +13,7 @@ export class ProductComponent implements OnInit {
     Id:1,
     Photo: '../../assets/images/lozha.png',
     Name: 'Ложа для СКС | C-205 P',
+    InStock: 1,
     Description: 'Полупистолетная с щеткой. Орех',
     FullDescription: 'Классическая охотничья ложа для карабина СКС. Изготавливается из высококачественного ореха. Резиновый амортизатор.',
     Price: 18000,
@@ -38,7 +40,7 @@ export class ProductComponent implements OnInit {
       }
     ]
   }
-  constructor() { }
+  constructor(public ms:ModalService) { }
 
   ngOnInit() {
     this.product.Photoes.unshift({Id:0, Path: this.product.Photo});

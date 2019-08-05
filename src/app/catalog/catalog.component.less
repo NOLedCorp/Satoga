@@ -6,7 +6,7 @@
         flex-direction: column;
         min-width: 250px;
         align-items: flex-start;
-        width: 25%; 
+        width: 24%; 
         img{
             width: 100%;
             margin-bottom: 20px;
@@ -15,8 +15,11 @@
             font-weight: 300;
             font-size: 20px;
             position: relative;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             cursor: pointer;
+            &~span{
+                margin-bottom: 20px;
+            }
             &:after{
                 content: '';
                 display: block;
@@ -32,7 +35,23 @@
             }
         }
         .price{
-            margin-bottom: 25px;
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.sort{
+    display: flex;
+    justify-content: flex-end;
+    
+    i{
+        margin-left: 5px;
+    }
+
+    &>div{
+        cursor: pointer;
+        &:hover{
+            text-decoration: underline;
         }
     }
 }

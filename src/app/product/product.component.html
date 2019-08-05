@@ -8,13 +8,13 @@
     
   </div>
   <h3 class="header mb-0">{{product.Name}}</h3>
-  <p>{{product.Description}}</p>
-  <p>{{product.FullDescription}}</p>
+  <p class="mb-0">{{product.Description}}</p>
+  <span class="px-1 text-white" [ngClass]="{'bg-success':!!product.InStock, 'bg-danger':!product.InStock}">{{!!product.InStock?'В наличии':'На заказ'}}</span>
+  <p class="mt-3">{{product.FullDescription}}</p>
   <div class="price">
     <b>{{product.Price}} руб.</b> 
   </div>
   <div class="btns">
-      <div class="btn btn-dark">Купить</div>
-      <div class="btn btn-secondary">Заказать</div>
+      <div class="btn btn-dark" (click)="ms.open('form', product)">Отправить заявку</div>
   </div>
 </div>

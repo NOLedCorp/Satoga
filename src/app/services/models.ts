@@ -1,6 +1,7 @@
-export enum SolidTypes{
-  Glass = 'Стекло',
-  Solid = 'Кристалл'
+export enum SortTypes{
+  None,
+  Increese,
+  Decreese
 }
 
 export enum PeriodicTypes{

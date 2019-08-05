@@ -1,16 +1,22 @@
-
-  <div class="container p-0 flex-container">
+<div class="container px-2">
+  <div class="sort">
+    <div>
+      <span (click)="changeSort()">Сортировать по цене<i class="fas {{getSort()}}"></i></span>
+    </div>
+  </div>
+  <div class="flex-container">
     <div class="item" *ngFor="let i of items">
       <img src="{{i.Photo}}" alt="{{i.Name}}">
       <h3 routerLink="/product/{{i.Id}}">{{i.Name}}</h3>
+      <span class="px-1 text-white" [ngClass]="{'bg-success':!!i.InStock, 'bg-danger':!i.InStock}">{{!!i.InStock?'В наличии':'На заказ'}}</span>
       <p>{{i.Description}}</p>
       <div class="price">
         <b>{{i.Price}} руб.</b> 
       </div>
       <div class="btns">
-          <div class="btn btn-dark">Купить</div>
-          <div class="btn btn-secondary">Заказать</div>
+          <div class="btn btn-lt" (click)="ms.open('form', i)"><span>Отправить заявку</span></div>
       </div>
       
     </div>
   </div>
+</div>

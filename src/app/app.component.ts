@@ -10,6 +10,5 @@ export class AppComponent {
   title = 'Satoga';
 
   constructor(public router:Router){
-    
   }
 }

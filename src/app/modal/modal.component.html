@@ -1,7 +1,7 @@
 <ng-template class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
 
   <div class="p-3">
-    <app-form *ngIf="ms.type=='form'"></app-form>
+    <app-form *ngIf="ms.type=='form'" [item]="ms.inpt"></app-form>
   </div>
   
   

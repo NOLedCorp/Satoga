@@ -9,6 +9,7 @@ import { LoadService } from '../services/load.service';
   styleUrls: ['./form.component.less']
 })
 export class FormComponent implements OnInit {
+  @Input() item:any = null;
   userForm:FormGroup;
   submitted = false;
   constructor(private fb:FormBuilder,  private ms:ModalService, private ls:LoadService) { }

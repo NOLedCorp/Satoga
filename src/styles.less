@@ -29,9 +29,9 @@ html{
     background-color: @green;
 }
 
-.btn-scss-lt{
+.btn-lt{
     background-color: transparent;
-    border: 1px solid @green;
+    border: 1px solid @dark;
     color: black;
     position: relative;
     padding-top: 0;
@@ -49,7 +49,7 @@ html{
         left: 0;
         height: 100%;
         width: 0;
-        background-color: @green;
+        background-color: @dark;
         transition: 0.3s;
     }
 
@@ -62,6 +62,13 @@ html{
         }
     }
 }
+
+.btn-lt-success{
+    border: 1px solid @green !important;
+    &:before{
+        background-color: @green !important;
+    }
+}
 .btn-secondary{
     background-color: @light-gray;
     border-color: @light-gray;
@@ -70,12 +77,15 @@ html{
 
 .flex-container{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .header{
     margin-bottom: 35px;
+}
+
+.bg-success{
+    background-color: @green;
 }
 
 
@@ -85,5 +95,13 @@ html{
         .item{
             width: 100% !important;
         }
+    }
+}
+
+@media (min-width: 1200px){
+    .container{
+        max-width: 1800px !important;
+        padding-left: 50px !important;
+        padding-right: 50px !important;
     }
 }
