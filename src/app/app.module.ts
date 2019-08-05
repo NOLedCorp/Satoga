@@ -35,6 +35,11 @@ import { ProductComponent } from './product/product.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { SatogaService } from './services/satoga.service';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { AddSectionComponent } from './add-section/add-section.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AddArticleComponent } from './add-article/add-article.component';
+import { AddVideoComponent } from './add-video/add-video.component';
+import { AddPhotoComponent } from './add-photo/add-photo.component';
 
 
 @NgModule({
@@ -56,7 +61,12 @@ import { SignInComponent } from './sign-in/sign-in.component';
     SectionComponent,
     ProductComponent,
     CarouselComponent,
-    SignInComponent
+    SignInComponent,
+    AddSectionComponent,
+    AddProductComponent,
+    AddArticleComponent,
+    AddVideoComponent,
+    AddPhotoComponent
   ],
   imports: [
     BrowserModule,
