@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SatogaService } from '../services/satoga.service';
 import { LoadService } from '../services/load.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-articles',
@@ -52,7 +53,7 @@ export class ArticlesComponent implements OnInit {
       Path:'../../assets/article.pdf'
     }
   ]
-  constructor(private ss:SatogaService, private ls:LoadService) { }
+  constructor(private ss:SatogaService, private ls:LoadService, public us:UserService) { }
 
   ngOnInit() {
     this.ls.showLoad = true;

@@ -11,11 +11,9 @@
     
     
 </div>
-<div style="margin-top: 100px;">
-    <sections></sections>
-</div>
+<sections></sections>
 
 
-<div class="catalog">
+<div class="catalog" *ngIf="items.length>0  || us.user">
     <catalog [items]="items"></catalog>
 </div>

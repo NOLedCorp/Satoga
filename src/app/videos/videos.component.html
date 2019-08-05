@@ -1,4 +1,7 @@
 <div class="container p-0">
-    <h3 class="header">Видео</h3>
+    <div class="d-flex">
+        <h3 class="header mb-0">Видео</h3>
+        <div class="btn btn-link pb-0" *ngIf="us.user">Добавить новое видео</div>
+    </div> 
     <iframe *ngFor="let v of videos" width="100%" style="height: 50vh" [src]="snt.bypassSecurityTrustResourceUrl(v.Path)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>

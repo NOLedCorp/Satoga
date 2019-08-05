@@ -11,57 +11,31 @@ export class UserService{
     public user:any;
     token:string;
     showContent=false;
-    baseUrl:string='http://client.nomokoiw.beget.tech/admin/';
+    userKey = "satogaUserKey";
+    
+    baseUrl:string='http://client.nomokoiw.beget.tech/satoga/';
 
     constructor(private router:Router, private http: HttpClient, private ls:LoadService){
         // sessionStorage.removeItem('userAdminPanel');
         // localStorage.removeItem('userAdminPanel');
-        if(sessionStorage.getItem('userAdminPanel')){
-            let u = JSON.parse(sessionStorage.getItem('userAdminPanel'));
+        if(sessionStorage.getItem(this.userKey)){
+            let u = JSON.parse(sessionStorage.getItem(this.userKey));
             this.signIn(u.Login, u.Password).subscribe(data => {
                 if(data){
                     this.user = {Login:u.Login, Password:u.Password};
                     this.save();
-                    this.router.events.subscribe(evt => {
-                        if (!(evt instanceof NavigationEnd)) {
-                            return;
-                        }
-                        if(!this.user){
-                            this.router.navigate(['sign']);
-                        }
-                    })
-                }else{
-                    this.router.navigate(['sign']);
                 }
-                this.showContent = true;
-                
             })
-            
         }
-        else if(localStorage.getItem('userAdminPanel')){
-            let u = JSON.parse(localStorage.getItem('userAdminPanel'));
+        else if(localStorage.getItem(this.userKey)){
+            let u = JSON.parse(localStorage.getItem(this.userKey));
             this.signIn(u.Login, u.Password).subscribe(data => {
                 if(data){
                     this.user = {Login:u.Login, Password:u.Password};
                     this.save();
-                    this.router.events.subscribe(evt => {
-                        if (!(evt instanceof NavigationEnd)) {
-                            return;
-                        }
-                        if(!this.user){
-                            this.router.navigate(['sign']);
-                        }
-                    })
-                }else{
-                    this.router.navigate(['sign']);
                 }
-                this.showContent = true;
             })
             
-        }else{
-
-            this.router.navigate(['sign']);
-            this.showContent = true;
         }
 
         
@@ -74,9 +48,8 @@ export class UserService{
 
     exit(){
         this.user = null;
-        sessionStorage.removeItem('userAdminPanel');
-        localStorage.removeItem('userAdminPanel');
-        this.router.navigate(['sign']);
+        sessionStorage.removeItem(this.userKey);
+        localStorage.removeItem(this.userKey);
     }
 
     /**
@@ -85,7 +58,7 @@ export class UserService{
      * @param password Пароль пользователя
      */
     public signIn(login:string, password:string){
-        return this.http.get<any>(this.baseUrl + 'controller.php?Key=enter&Login='+login+'&Password='+password);
+        return this.http.get<any>(this.baseUrl + 'admin_controller.php?Key=enter&Login='+login+'&Password='+password);
     }
 
     /**
@@ -102,9 +75,9 @@ export class UserService{
      */
     public save(local = false){
         if(local){
-            localStorage.setItem('userAdminPanel', JSON.stringify(this.user));
+            localStorage.setItem(this.userKey, JSON.stringify(this.user));
         }
-        sessionStorage.setItem('userAdminPanel', JSON.stringify(this.user));
+        sessionStorage.setItem(this.userKey, JSON.stringify(this.user));
     }
     
     /**

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalService } from '../services/modal.service';
 import { SatogaService } from '../services/satoga.service';
 import { LoadService } from '../services/load.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { LoadService } from '../services/load.service';
 })
 export class HomeComponent implements OnInit {
   items = [];
-  constructor(private ss:SatogaService, public ms:ModalService, private ls:LoadService) { }
+  constructor(private ss:SatogaService, public ms:ModalService, private ls:LoadService, public us:UserService) { }
 
   ngOnInit() {
     this.ls.showLoad = true;

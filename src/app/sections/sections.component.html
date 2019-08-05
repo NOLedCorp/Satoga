@@ -1,5 +1,5 @@
-<div class="sections" *ngIf="items.length>0">
-  <h2 class="d-flex justify-content-center" >Наша продукция</h2>
+<div class="sections" style="margin-top: 100px;"  *ngIf="items.length>0 || us.user">
+  <h2 class="d-flex justify-content-center">Разделы</h2>
     <div class="row flex-container">
       <div class="item" *ngFor="let i of items">
         <h3>{{i.Name}}</h3>
@@ -7,6 +7,9 @@
         <img src="{{i.Photo}}" alt="">
         <span>от {{i.MinPrice}} руб.</span>
         <div class="btn btn-dark" routerLink="/section/{{i.Id}}">Просмотреть раздел</div>
+      </div>
+      <div class="item plus" style="min-height: 300px">
+        <i class="fas fa-plus"></i>
       </div>
     </div>
 </div>

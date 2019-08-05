@@ -34,6 +34,7 @@ import { SectionComponent } from './section/section.component';
 import { ProductComponent } from './product/product.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { SatogaService } from './services/satoga.service';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { SatogaService } from './services/satoga.service';
     PhotoViewerComponent,
     SectionComponent,
     ProductComponent,
-    CarouselComponent
+    CarouselComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

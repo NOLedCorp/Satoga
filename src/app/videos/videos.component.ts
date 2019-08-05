@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SatogaService } from '../services/satoga.service';
 import { LoadService } from '../services/load.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-videos',
@@ -29,7 +30,7 @@ export class VideosComponent implements OnInit {
       Path: 'https://youtu.be/uGBZ_--HPcM'
     }
   ]
-  constructor(public snt:DomSanitizer, private ss:SatogaService, private ls:LoadService) { }
+  constructor(public snt:DomSanitizer, private ss:SatogaService, private ls:LoadService, public us:UserService) { }
 
   ngOnInit() {
     this.ls.showLoad = true;

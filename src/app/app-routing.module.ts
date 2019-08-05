@@ -7,6 +7,7 @@ import { VideosComponent } from './videos/videos.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SectionComponent } from './section/section.component';
 import { ProductComponent } from './product/product.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'catalog', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'gallery', component: GalleryComponent},
   { path: 'videos', component: VideosComponent},
   { path: 'contacts', component: ContactsComponent},
+  { path: 'sign-in', component: SignInComponent},
   { path: 'section/:id', component: SectionComponent},
   { path: 'product/:id', component: ProductComponent}
   

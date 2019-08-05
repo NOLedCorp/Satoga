@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Satoga';
-
-  constructor(public router:Router){
+  @HostListener('document:keydown.control.m') doSth(){
+    this.router.navigate(['/sign-in']);
+  }
+  constructor(public router:Router, public us:UserService){
+    
   }
 }

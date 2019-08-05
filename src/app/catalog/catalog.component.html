@@ -1,5 +1,6 @@
-<div class="container px-2" *ngIf="items.length>0">
-  <div class="sort">
+<div class="container px-2">
+  <h3>Товары</h3>
+  <div *ngIf="items.length>0" class="sort">
     <div>
       <span (click)="changeSort()">Сортировать по цене<i class="fas {{getSort()}}"></i></span>
     </div>
@@ -17,6 +18,9 @@
           <div class="btn btn-lt" (click)="ms.open('form', i)"><span>Отправить заявку</span></div>
       </div>
       
+    </div>
+    <div class="item plus" style="min-height: 300px">
+      <i class="fas fa-plus"></i>
     </div>
   </div>
 </div>
