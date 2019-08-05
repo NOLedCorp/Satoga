@@ -1,23 +1,11 @@
-<div class="container p-0">
+<div class="container px-2">
     <div class="head">
-        <div class="head-left">
-            <div style="flex: 1">
-                <p>Изготавливаю приклады и ложи высокого качества</p>
-                <div class="d-flex">
-                    <span class="outlist-item">Орех</span>
-                    <span class="outlist-item">Бук</span>
-                </div>
-                <p>Изготовление как готовой продукции,<br> так и изделий под заказ</p>
-            </div>
-            
-            <div class="btns mb-0">
-                <div class="btn btn-success" (click)="ms.open('form')">Отправить заявку</div>
-                <div class="btn btn-secondary" (click)="showCatalog()">Ознакомиться с каталогом</div>
-                
-            </div>
+        <div class="label">
+            <p>Винтовочные ложи в наличии и на заказ</p>
+            <div class="btn btn-scss-lt"><span>Оставить заявку</span></div>
         </div>
-        <div class="head-right">
-            <img src="../assets/images/lozha.png">
+        <div class="carousel">
+            <stg-carousel></stg-carousel>
         </div>
     </div>
     
@@ -28,8 +16,6 @@
 </div>
 
 
-<div class="container p-0">
-    <div class="catalog">
-        <catalog></catalog>
-    </div>
+<div class="catalog">
+    <catalog></catalog>
 </div>

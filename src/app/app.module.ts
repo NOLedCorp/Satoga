@@ -32,6 +32,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { PhotoViewerComponent } from './photo-viewer/photo-viewer.component';
 import { SectionComponent } from './section/section.component';
 import { ProductComponent } from './product/product.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { ProductComponent } from './product/product.component';
     ContactsComponent,
     PhotoViewerComponent,
     SectionComponent,
-    ProductComponent
+    ProductComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
