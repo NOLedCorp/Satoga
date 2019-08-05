@@ -8,7 +8,7 @@
         <span>от {{i.MinPrice}} руб.</span>
         <div class="btn btn-dark" routerLink="/section/{{i.Id}}">Просмотреть раздел</div>
       </div>
-      <div class="item plus" style="min-height: 300px">
+      <div class="item plus" (click)="ms.open('section')" style="min-height: 300px">
         <i class="fas fa-plus"></i>
       </div>
     </div>

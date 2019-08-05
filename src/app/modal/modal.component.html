@@ -2,6 +2,11 @@
 
   <div class="p-3">
     <app-form *ngIf="ms.type=='form'" [item]="ms.inpt"></app-form>
+    <add-section *ngIf="ms.type=='section'" ></add-section>
+    <add-product *ngIf="ms.type=='product'" ></add-product>
+    <add-article *ngIf="ms.type=='article'" ></add-article>
+    <add-video *ngIf="ms.type=='video'"></add-video>
+    <add-photo *ngIf="ms.type=='photo'"></add-photo>
   </div>
   
   
