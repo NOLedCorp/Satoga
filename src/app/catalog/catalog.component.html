@@ -2,7 +2,7 @@
   <div class="flex-container">
     <div class="item" *ngFor="let i of items">
       <img src="{{i.Photo}}" alt="{{i.Name}}">
-      <h3>{{i.Name}}</h3>
+      <h3 routerLink="/product/{{i.Id}}">{{i.Name}}</h3>
       <p>{{i.Description}}</p>
       <div class="price">
         <b>{{i.Price}} руб.</b> 

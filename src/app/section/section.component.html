@@ -1,0 +1,4 @@
+<div *ngIf="section" class="container p-0">
+  <h3 class="header">{{section.Name}}</h3>
+  <catalog [items]="section.Goods"></catalog>
+</div>

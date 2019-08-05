@@ -13,6 +13,7 @@
     }
     .eye{
         position: absolute;
+        text-decoration: none;
         opacity: 0;
         transition: 0.3s;
         cursor: pointer;
@@ -28,7 +29,7 @@
             color:@light-gray;
             font-size: 40px;
         }
-        &:hover{
+        &:hover, &.active{
             opacity: 1;
         }
     }

@@ -1,4 +1,4 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" data-interval="false" class="carousel slide" data-ride="carousel">
   <i class="fas fa-times" (click)="closeViewer()"></i>
   <div class="carousel-inner">
     <div class="carousel-item" [ngClass]="{'active':i==0}" *ngFor="let s of items; let i = index;">

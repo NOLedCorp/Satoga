@@ -17,6 +17,8 @@ export class PhotoViewerComponent implements OnInit {
   closeViewer(){
     this.onClose.emit(true);
   }
+
+
   
 
 }

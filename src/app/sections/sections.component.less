@@ -1,4 +1,7 @@
 @import "../../colors.less";
+h2{
+    text-align: center; font-size: 40px; font-weight: 800; margin: 30px 0; padding-top: 50px;
+}
 .sections{
     background-color: @light-gray;
     .row{
@@ -10,7 +13,8 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            width: 50%;
+            width: 25%;
+            min-width: 225px;
             padding: 40px 10px;
             p{
                 text-align: center;
@@ -27,9 +31,12 @@
 
 
 @media (max-width:576px){
+    h2{
+        font-size: 30px !important;
+    }
     .sections{
-        margin-left: -3rem !important;
-        margin-right: -3rem !important;
+        margin-left: -8px !important;
+        margin-right: -8px !important;
     }   
     
 }

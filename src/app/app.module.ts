@@ -30,6 +30,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { VideosComponent } from './videos/videos.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { PhotoViewerComponent } from './photo-viewer/photo-viewer.component';
+import { SectionComponent } from './section/section.component';
+import { ProductComponent } from './product/product.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { PhotoViewerComponent } from './photo-viewer/photo-viewer.component';
     GalleryComponent,
     VideosComponent,
     ContactsComponent,
-    PhotoViewerComponent
+    PhotoViewerComponent,
+    SectionComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

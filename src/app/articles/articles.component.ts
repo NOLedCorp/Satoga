@@ -11,37 +11,43 @@ export class ArticlesComponent implements OnInit {
       Photo: '../../assets/images/lozha.png',
       Name: 'Ложа для СКС | C-205 P',
       Description: 'Полупистолетная с щеткой. Орех',
-      Author: 'Иван Номоконов'
+      Author: 'Иван Номоконов',
+      Path:'../../assets/article.pdf'
     },
     {
       Photo: '../../assets/images/lozha.png',
       Name: 'Ложа для СКС | C-205 P',
       Description: 'Полупистолетная с щеткой. Орех',
-      Author: 'Иван Номоконов'
+      Author: 'Иван Номоконов',
+      Path:'../../assets/article.pdf'
     },
     {
       Photo: '../../assets/images/lozha.png',
       Name: 'Ложа для СКС | C-205 P',
       Description: 'Полупистолетная с щеткой. Орех',
-      Author: 'Иван Номоконов'
+      Author: 'Иван Номоконов',
+      Path:'../../assets/article.pdf'
     },
     {
       Photo: '../../assets/images/lozha.png',
       Name: 'Ложа для СКС | C-205 P',
       Description: 'Полупистолетная с щеткой. Орех',
-      Author: 'Иван Номоконов'
+      Author: 'Иван Номоконов',
+      Path:'../../assets/article.pdf'
     },
     {
       Photo: '../../assets/images/lozha.png',
       Name: 'Ложа для СКС | C-205 P',
       Description: 'Полупистолетная с щеткой. Орех',
-      Author: 'Иван Номоконов'
+      Author: 'Иван Номоконов',
+      Path:'../../assets/article.pdf'
     },
     {
       Photo: '../../assets/images/lozha.png',
       Name: 'Ложа для СКС | C-205 P',
       Description: 'Полупистолетная с щеткой. Орех',
-      Author: 'Иван Номоконов'
+      Author: 'Иван Номоконов',
+      Path:'../../assets/article.pdf'
     }
   ]
   constructor() { }

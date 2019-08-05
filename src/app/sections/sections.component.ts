@@ -8,27 +8,31 @@ import { Component, OnInit } from '@angular/core';
 export class SectionsComponent implements OnInit {
   items:any = [
     {
+      Id:1,
       Name:"Элитные ложи",
       Description:"Высококачественный орех. Супер амортизатор.",
-      Photo: "../../assets/lozha.png",
+      Photo: "../../assets/images/lozha.png",
       MinPrice: 18000
     },
     {
+      Id:2,
       Name:"Элитные ложи",
       Description:"Высококачественный орех. Супер амортизатор.",
-      Photo: "../../assets/lozha.png",
+      Photo: "../../assets/images/lozha.png",
       MinPrice: 18000
     },
     {
+      Id:3,
       Name:"Элитные ложи",
       Description:"Высококачественный орех. Супер амортизатор.",
-      Photo: "../../assets/lozha.png",
+      Photo: "../../assets/images/lozha.png",
       MinPrice: 18000
     },
     {
+      Id:4,
       Name:"Элитные ложи",
       Description:"Высококачественный орех. Супер амортизатор.",
-      Photo: "../../assets/lozha.png",
+      Photo: "../../assets/images/lozha.png",
       MinPrice: 18000
     }
   ];

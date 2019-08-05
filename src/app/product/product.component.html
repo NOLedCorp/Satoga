@@ -1,0 +1,20 @@
+<div *ngIf="product" class="container p-0">
+  <img src="{{product.Photoes[current].Path}}" alt="">
+  <div class="photoes">
+    <div class="item"  *ngFor="let i of product.Photoes; let idx = index" (click)="show(idx)">
+        <img src="{{i.Path}}" >
+        <div class="eye" [ngClass]="{'active':idx==current}"><i class="far fa-eye"></i></div>
+    </div>
+    
+  </div>
+  <h3 class="header mb-0">{{product.Name}}</h3>
+  <p>{{product.Description}}</p>
+  <p>{{product.FullDescription}}</p>
+  <div class="price">
+    <b>{{product.Price}} руб.</b> 
+  </div>
+  <div class="btns">
+      <div class="btn btn-dark">Купить</div>
+      <div class="btn btn-secondary">Заказать</div>
+  </div>
+</div>
