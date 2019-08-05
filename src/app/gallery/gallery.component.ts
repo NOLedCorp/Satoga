@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SatogaService } from '../services/satoga.service';
+import { LoadService } from '../services/load.service';
 
 @Component({
   selector: 'app-gallery',
@@ -6,41 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gallery.component.less']
 })
 export class GalleryComponent implements OnInit {
-  photoes:any = [
-    {
-      Photo: '../../assets/images/lozha.png',
-      Name: 'Ложа для СКС | C-205 P'
-    },
-    {
-      Photo: '../../assets/images/lozha.png',
-      Name: 'Ложа для СКС | C-205 P'
-    },
-    {
-      Photo: '../../assets/images/lozha.png',
-      Name: 'Ложа для СКС | C-205 P'
-    },
-    {
-      Photo: '../../assets/images/lozha.png',
-      Name: 'Ложа для СКС | C-205 P'
-    },
-    {
-      Photo: '../../assets/images/lozha.png',
-      Name: 'Ложа для СКС | C-205 P'
-    },
-    {
-      Photo: '../../assets/images/lozha.png',
-      Name: 'Ложа для СКС | C-205 P'
-    }
-  ];
+  photoes:any;
 
   show = false;
-  constructor() { }
+  constructor(private ss:SatogaService, private ls:LoadService) { }
 
   ngOnInit() {
+    this.ls.showLoad = true;
+    this.ss.getPhotoes().subscribe(items => {
+      this.photoes = items;
+      this.ls.showLoad=false;
+    })
   }
 
   getPhotoes(){
-    return this.photoes.map(x => { return {Name: x.Name, Path: x.Photo}})
+    if(this.photoes){
+      return this.photoes.map(x => { return {Name: x.Name, Path: x.Photo}})
+    }else{
+      return [];
+    }
+    
   }
 
   close(){

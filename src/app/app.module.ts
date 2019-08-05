@@ -33,6 +33,7 @@ import { PhotoViewerComponent } from './photo-viewer/photo-viewer.component';
 import { SectionComponent } from './section/section.component';
 import { ProductComponent } from './product/product.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { SatogaService } from './services/satoga.service';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { CarouselComponent } from './carousel/carousel.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [FormBuilder, HttpClient, ModalService, BsModalService, UserService, LoadService, AdminService],
+  providers: [FormBuilder, HttpClient, ModalService, BsModalService, UserService, LoadService, AdminService, SatogaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

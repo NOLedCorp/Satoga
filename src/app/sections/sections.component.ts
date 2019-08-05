@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SatogaService } from '../services/satoga.service';
+import { LoadService } from '../services/load.service';
 
 @Component({
   selector: 'sections',
@@ -36,9 +38,14 @@ export class SectionsComponent implements OnInit {
       MinPrice: 18000
     }
   ];
-  constructor() { }
+  constructor(private ss:SatogaService, private ls:LoadService) { }
 
   ngOnInit() {
+    this.ls.showLoad = true;
+    this.ss.getSections().subscribe(items => {
+      this.items = items;
+      this.ls.showLoad=false;
+    })
   }
 
 }

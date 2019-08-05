@@ -1,12 +1,12 @@
 <?php
-require 'models.php';
+
 class DataBase {
     //$this->db = new PDO('mysql:host=localhost;dbname=nomokoiw_portal;charset=UTF8','nomokoiw_portal','KESRdV2f');
     public $db;
     public function __construct()
     {
         //$this->db = new PDO('mysql:host=localhost;dbname=myblog;charset=UTF8','nlc','12345');
-        $this->db = new PDO('mysql:host=localhost;dbname=nomokoiw_stg;charset=UTF8','nomokoiw_stg','ms87%L39');
+        $this->db = new PDO('mysql:host=localhost;dbname=nomokoiw_stg;charset=UTF8','nomokoiw_stg','%L7fxvyt');
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
@@ -34,7 +34,7 @@ class DataBase {
     }
     
     public function getSections(){
-        $sth = $this->db->query("SELECT * FROM sections");
+        $sth = $this->db->query("SELECT Id, Name, Description, Photo, (select MIN(Price) FROM goods WHERE SectionId=s.Id) as MinPrice FROM sections s");
         $sth->setFetchMode(PDO::FETCH_CLASS, 'Section');
         $sections = [];
         while ($j = $sth->fetch()) {
@@ -43,21 +43,28 @@ class DataBase {
         }
         return $sections;
     }
+    
+    public function getMain(){
+        $sth = $this->db->query("SELECT * FROM goods WHERE Main=1");
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'Good');
+        return $sth->fetch();
+    }
 
     public function getGoods(){
-        return genSelectQuery('goods');
+        
+        return $this->genSelectQuery('goods');
     }
 
     public function getArticles(){
-        return genSelectQuery('articles');
+        return $this->genSelectQuery('articles');
     }
 
     public function getPhotoes(){
-        return genSelectQuery('photos');
+        return $this->genSelectQuery('photos');
     }
 
     public function getVideos(){
-        return genSelectQuery('videos');
+        return $this->genSelectQuery('videos');
     }
     
     private function getSectionGoods($sid){

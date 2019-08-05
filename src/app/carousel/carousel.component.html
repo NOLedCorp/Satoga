@@ -1,18 +1,8 @@
-<div class="carousel">
+<div class="carousel" *ngIf="items.length>0">
   <div class="carousel-header">
-    <div class="slide active">
-        <h2>Lorem <br> ipsum dolor.</h2>
-        <p>Lorem ipsum dolor sit.</p>
-        <div class="btn btn-lt btn-lt-success"><span>Подробнее</span></div>
-    </div>
-    <div class="slide">
-        <h2>Lorem <br> ipsum dolor.</h2>
-        <p>Lorem ipsum dolor sit.</p>
-        <div class="btn btn-lt btn-lt-success"><span>Подробнее</span></div>
-    </div>
-    <div class="slide">
-        <h2>Lorem <br> ipsum dolor.</h2>
-        <p>Lorem ipsum dolor sit.</p>
+    <div class="slide" [ngClass]="{'active':idx==0}" *ngFor="let i of items; let idx = index;">
+        <h2>{{i.Name}}</h2>
+        <p>{{i.Description}}</p>
         <div class="btn btn-lt btn-lt-success"><span>Подробнее</span></div>
     </div>
     <div class="controls">
@@ -29,14 +19,8 @@
     </div>
   </div>
   <div class="carousel-body">
-    <div class="slide active">
-      <img src="../../assets/images/lozha2.jpg" alt="">
-    </div>
-    <div class="slide">
-      <img src="../../assets/images/lozha2.jpg" alt="">
-    </div>
-    <div class="slide">
-      <img src="../../assets/images/lozha2.jpg" alt="">
+    <div class="slide" [ngClass]="{'active':idx==0}" *ngFor="let i of items; let idx = index;">
+      <img src="{{i.Photo}}" alt="">
     </div>
   </div>
 </div>

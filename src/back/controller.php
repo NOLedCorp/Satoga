@@ -15,6 +15,9 @@ if(isset($_GET['Key']))
         case 'get-goods':
             echo json_encode($ctxt->getGoods());
             break;
+        case 'get-main':
+            echo json_encode($ctxt->getMain());
+            break;
         case 'get-articles':
             echo json_encode($ctxt->getArticles());
             break;

@@ -1,3 +1,13 @@
+
+
+CREATE TABLE IF NOT EXISTS sections (
+	Id int(10) PRIMARY KEY AUTO_INCREMENT,
+    Name varchar(255),
+    Description varchar(255) NOT NULL,
+    Photo varchar(255) NOT NULL,
+    CreateDate datetime DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS goods (
 	Id int(10) PRIMARY KEY AUTO_INCREMENT,
     SectionId int(10) NOT NULL,
@@ -6,17 +16,11 @@ CREATE TABLE IF NOT EXISTS goods (
     FullDescription text NOT NULL,
     Photo varchar(255) NOT NULL,
     InStock tinyint(1) DEFAULT 0,
+    Price float(10,2) NOT NULL,
+    Main tinyint(1) DEFAULT 0,
     CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT aa_fk FOREIGN KEY(AppId) REFERENCES apps(Id) ON DELETE CASCADE,
-);
-
-CREATE TABLE IF NOT EXISTS sections (
-	Id int(10) PRIMARY KEY AUTO_INCREMENT,
-    Name varchar(255),
-    Description varchar(255) NOT NULL,
-    Photo varchar(255) NOT NULL,
-    CreateDate datetime DEFAULT CURRENT_TIMESTAMP
+    CONSTRAINT aa_fk FOREIGN KEY(SectionId) REFERENCES sections(Id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS apps (

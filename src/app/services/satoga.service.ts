@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 // import { OnInit } from '@angular/core';
 
 @Injectable()
-export class AdminService{
+export class SatogaService{
     token:string;
     baseUrl:string='http://client.nomokoiw.beget.tech/satoga/controller.php?';
 
@@ -18,6 +18,10 @@ export class AdminService{
 
     public getGoods(){
         return this.http.get<any>(this.baseUrl + 'Key=get-goods');
+    }
+
+    public getMain(){
+        return this.http.get<any>(this.baseUrl + 'Key=get-main');
     }
 
     public getArticles(){

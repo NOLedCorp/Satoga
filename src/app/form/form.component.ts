@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ModalService } from '../services/modal.service';
 import { LoadService } from '../services/load.service';
+import { SatogaService } from '../services/satoga.service';
 
 @Component({
   selector: 'app-form',
@@ -12,7 +13,7 @@ export class FormComponent implements OnInit {
   @Input() item:any = null;
   userForm:FormGroup;
   submitted = false;
-  constructor(private fb:FormBuilder,  private ms:ModalService, private ls:LoadService) { }
+  constructor(private fb:FormBuilder,  private ms:ModalService, private ls:LoadService, private ss:SatogaService) { }
 
   ngOnInit() {
     this.userForm = this.fb.group({
@@ -37,6 +38,11 @@ export class FormComponent implements OnInit {
         Email:this.userForm.value.Email
       }
     }
+
+    this.ls.showLoad = true;
+    this.ss.addApp(app).subscribe(x => {
+      this.ls.showLoad = false;
+    })
 
   }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
 import { ModalService } from '../services/modal.service';
+import { SatogaService } from '../services/satoga.service';
+import { ActivatedRoute } from '@angular/router';
+import { LoadService } from '../services/load.service';
 
 @Component({
   selector: 'app-product',
@@ -9,42 +11,18 @@ import { ModalService } from '../services/modal.service';
 })
 export class ProductComponent implements OnInit {
   current:number;
-  product:any = {
-    Id:1,
-    Photo: '../../assets/images/lozha.png',
-    Name: 'Ложа для СКС | C-205 P',
-    InStock: 1,
-    Description: 'Полупистолетная с щеткой. Орех',
-    FullDescription: 'Классическая охотничья ложа для карабина СКС. Изготавливается из высококачественного ореха. Резиновый амортизатор.',
-    Price: 18000,
-    Photoes: [
-      {
-        Id:1,
-        Path:'../../assets/images/lozha.png'
-      },
-      {
-        Id:2,
-        Path:'../../assets/images/lozha.png'
-      },
-      {
-        Id:3,
-        Path:'../../assets/images/lozha.png'
-      },
-      {
-        Id:4,
-        Path:'../../assets/images/lozha.png'
-      },
-      {
-        Id:5,
-        Path:'../../assets/images/lozha.png'
-      }
-    ]
-  }
-  constructor(public ms:ModalService) { }
+  product:any;
+  constructor(public ms:ModalService, private ss:SatogaService, private ls:LoadService, private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.product.Photoes.unshift({Id:0, Path: this.product.Photo});
-    this.current = 0;
+    this.ls.showLoad = true;
+    this.ss.getGood(this.route.snapshot.paramMap.get("id")).subscribe(good => {
+      this.product = good;
+      this.product.Photoes.unshift({Id:0, Path: this.product.Photo});
+      this.current = 0;
+      this.ls.showLoad = false;
+    })
+    
   }
 
   show(i){

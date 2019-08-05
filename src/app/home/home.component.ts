@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from '../services/modal.service';
+import { SatogaService } from '../services/satoga.service';
+import { LoadService } from '../services/load.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +9,15 @@ import { ModalService } from '../services/modal.service';
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(public ms:ModalService) { }
+  items = [];
+  constructor(private ss:SatogaService, public ms:ModalService, private ls:LoadService) { }
 
   ngOnInit() {
-    
+    this.ls.showLoad = true;
+    this.ss.getGoods().subscribe(items => {
+      this.items = items;
+      this.ls.showLoad=false;
+    })
   }
 
   showCatalog(){
