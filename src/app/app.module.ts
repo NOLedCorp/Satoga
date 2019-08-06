@@ -10,7 +10,7 @@ import { ModalComponent } from './modal/modal.component';
 import { ModalService } from './services/modal.service';
 
 //HTTP запросы
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS  } from '@angular/common/http';
 
 //Компоненты
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +40,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { AddVideoComponent } from './add-video/add-video.component';
 import { AddPhotoComponent } from './add-photo/add-photo.component';
+import { ApiInterceptor } from './api.interceptor';
 
 
 @NgModule({
@@ -76,7 +77,19 @@ import { AddPhotoComponent } from './add-photo/add-photo.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [FormBuilder, HttpClient, ModalService, BsModalService, UserService, LoadService, AdminService, SatogaService],
+  providers: [
+    FormBuilder, 
+    HttpClient, 
+    ModalService, 
+    BsModalService, 
+    UserService, 
+    LoadService, 
+    AdminService, 
+    SatogaService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

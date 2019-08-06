@@ -30,7 +30,7 @@ export class SignInComponent implements OnInit {
     if(this.userForm.invalid){
       return;
     }
-    this.us.signIn(this.userForm.value.Login, this.userForm.value.Password).subscribe(data => {
+    this.us.signIn(this.userForm.value).subscribe(data => {
       if(data){
         this.us.user = {Login:this.userForm.value.Login, Password:this.userForm.value.Password};
         this.us.save(this.save);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SatogaService } from '../services/satoga.service';
 import { LoadService } from '../services/load.service';
 import { UserService } from '../services/user.service';
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: 'sections',
@@ -39,7 +40,7 @@ export class SectionsComponent implements OnInit {
       MinPrice: 18000
     }
   ];
-  constructor(private ss:SatogaService, private ls:LoadService, public us:UserService) { }
+  constructor(private ss:SatogaService, private ls:LoadService, public us:UserService, public ms:ModalService) { }
 
   ngOnInit() {
     this.ls.showLoad = true;

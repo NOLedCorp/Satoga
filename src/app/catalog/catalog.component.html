@@ -19,7 +19,7 @@
       </div>
       
     </div>
-    <div class="item plus" *ngIf="us.user" style="min-height: 300px">
+    <div class="item plus" *ngIf="us.user" (click)="ms.open('product')" style="min-height: 300px">
       <i class="fas fa-plus"></i>
     </div>
   </div>

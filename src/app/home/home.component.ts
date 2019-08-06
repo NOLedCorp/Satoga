@@ -3,6 +3,7 @@ import { ModalService } from '../services/modal.service';
 import { SatogaService } from '../services/satoga.service';
 import { LoadService } from '../services/load.service';
 import { UserService } from '../services/user.service';
+import { AdminService } from '../services/admin.service';
 
 @Component({
   selector: 'app-home',
@@ -89,7 +90,7 @@ export class HomeComponent implements OnInit {
       Price: 70000
     }
   ];
-  constructor(private ss:SatogaService, public ms:ModalService, private ls:LoadService, public us:UserService) { }
+  constructor(private ss:SatogaService, public ms:ModalService, private ls:LoadService, public us:UserService, private as:AdminService) { }
 
   ngOnInit() {
     this.ls.showLoad = true;
@@ -98,6 +99,9 @@ export class HomeComponent implements OnInit {
         this.items = items;
       }
       this.ls.showLoad=false;
+    })
+    this.as.addSection(null).subscribe(x => {
+      console.log(x);
     })
   }
 

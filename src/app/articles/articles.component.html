@@ -8,7 +8,7 @@
       <span><i class="fas fa-user"></i> {{i.Author}}</span>
       <a href="{{i.Path}}" target="blank" class="eye" ><i class="far fa-eye"></i></a>
     </div>
-    <div *ngIf="us.user" class="item plus" style="min-height: 300px">
+    <div *ngIf="us.user" (click)="ms.open('article')" class="item plus" style="min-height: 300px">
       <i class="fas fa-plus"></i>
     </div>
   </div>

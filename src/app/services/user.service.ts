@@ -19,20 +19,24 @@ export class UserService{
         // sessionStorage.removeItem('userAdminPanel');
         // localStorage.removeItem('userAdminPanel');
         if(sessionStorage.getItem(this.userKey)){
-            let u = JSON.parse(sessionStorage.getItem(this.userKey));
-            this.signIn(u.Login, u.Password).subscribe(data => {
+            let u=JSON.parse(sessionStorage.getItem(this.userKey));
+            this.signIn(u).subscribe(data => {
                 if(data){
-                    this.user = {Login:u.Login, Password:u.Password};
+                    this.User=u;
                     this.save();
+                }else{
+                    sessionStorage.removeItem(this.userKey);
                 }
             })
         }
         else if(localStorage.getItem(this.userKey)){
-            let u = JSON.parse(localStorage.getItem(this.userKey));
-            this.signIn(u.Login, u.Password).subscribe(data => {
+            let u=JSON.parse(sessionStorage.getItem(this.userKey));
+            this.signIn(u).subscribe(data => {
                 if(data){
-                    this.user = {Login:u.Login, Password:u.Password};
+                    this.User=u;
                     this.save();
+                }else{
+                    localStorage.removeItem(this.userKey);
                 }
             })
             
@@ -42,8 +46,10 @@ export class UserService{
     }
 
     set User(User:any){
-        this.user = User.User;
-        this.token = User.Token; 
+        this.user = {
+            Login:User.Login,
+            Password:  User.Password
+        };
     }
 
     exit(){
@@ -57,8 +63,8 @@ export class UserService{
      * @param login login пользовтеля
      * @param password Пароль пользователя
      */
-    public signIn(login:string, password:string){
-        return this.http.get<any>(this.baseUrl + 'admin_controller.php?Key=enter&Login='+login+'&Password='+password);
+    public signIn(user){
+        return this.http.get<any>(this.baseUrl + 'admin_controller.php?Key=enter&Login='+encodeURIComponent(user.Login)+'&Password='+encodeURIComponent(user.Password));
     }
 
     /**
