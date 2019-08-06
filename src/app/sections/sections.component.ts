@@ -44,7 +44,10 @@ export class SectionsComponent implements OnInit {
   ngOnInit() {
     this.ls.showLoad = true;
     this.ss.getSections().subscribe(items => {
-      this.items = items;
+      if(items && items.length>0){
+        this.items = items;
+      }
+      
       this.ls.showLoad=false;
     })
   }

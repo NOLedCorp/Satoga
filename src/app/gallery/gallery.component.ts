@@ -9,7 +9,29 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./gallery.component.less']
 })
 export class GalleryComponent implements OnInit {
-  photoes:any;
+  photoes:any = [
+    {
+      Name:'Ложа для СКС | C-205 P',
+      Photo: '../../assets/images/lozha.png'
+    },
+    {
+      Name:'Ложа для СКС | C-205 P',
+      Photo: '../../assets/images/lozha.png'
+    },
+    {
+      Name:'Ложа для СКС | C-205 P',
+      Photo: '../../assets/images/lozha.png'
+    },
+    {
+      Name:'Ложа для СКС | C-205 P',
+      Photo: '../../assets/images/lozha.png'
+    },
+    {
+      Name:'Ложа для СКС | C-205 P',
+      Photo: '../../assets/images/lozha.png'
+    }
+
+  ];
 
   show = false;
   constructor(private ss:SatogaService, private ls:LoadService, public us:UserService) { }
@@ -17,7 +39,10 @@ export class GalleryComponent implements OnInit {
   ngOnInit() {
     this.ls.showLoad = true;
     this.ss.getPhotoes().subscribe(items => {
-      this.photoes = items;
+      if(items && items.length>0){
+        this.photoes = items;
+      }
+      
       this.ls.showLoad=false;
     })
   }

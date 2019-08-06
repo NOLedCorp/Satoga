@@ -35,10 +35,14 @@ export class VideosComponent implements OnInit {
   ngOnInit() {
     this.ls.showLoad = true;
     this.ss.getPhotoes().subscribe(items => {
-      this.videos = items;
+      if(items && items.lenght>0){
+        this.videos = items;
+        
+      }
       this.videos.forEach(v => {
         v.Path = v.Path.replace('youtu.be/','www.youtube.com/embed/');
       })
+      
       this.ls.showLoad=false;
     })
     

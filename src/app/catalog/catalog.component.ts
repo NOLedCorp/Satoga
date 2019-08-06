@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalService } from '../services/modal.service';
 import { SortTypes } from '../services/models';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'catalog',
@@ -89,7 +90,7 @@ export class CatalogComponent implements OnInit {
   ];
 
   sort:SortTypes = 0;
-  constructor(public ms:ModalService) { }
+  constructor(public ms:ModalService, public us:UserService) { }
 
   ngOnInit() {
   }
