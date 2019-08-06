@@ -25,7 +25,9 @@
 .container{
     padding: 60px 0;
     padding-bottom: 0;
-    
+    &>.d-flex{
+        margin-bottom: 40px;
+    }
     h1,h2{
         font-family: Tahoma, Arial, sans-serif;
         text-transform: uppercase;
@@ -39,10 +41,24 @@
     }
     h2{
         margin-top: 0;
-        margin-bottom: 40px;
         font-size: 15px;
         color: black;
         font-weight: 400;
+    }
+    fieldset{
+        position: relative;
+        input{
+            max-width: 300px;
+            padding-right: 40px;
+        }
+        button{
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            padding: 0;
+            width: 40px;
+        }
     }
     .menu{
         

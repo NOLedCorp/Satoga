@@ -5,8 +5,19 @@
     <div class="btn btn-link" (click)="us.exit()">Выйти</div>
 </div>
 <div class="container px-2" *ngIf="router.url!='/sign-in'">
-    <h1 >Satoga</h1>
-    <h2>Винтовочные ложи высокого класса</h2>
+    <div class="d-flex justify-content-between align-items-end">
+        <div>
+            <h1 >Satoga</h1>
+            <h2>Винтовочные ложи высокого класса</h2>
+        </div>
+        <div class="search">
+            <fieldset class="d-flex">
+                <input type="text" class="form-control" placeholder="Поиск по каталогу">
+                <button class="btn"><i class="fas fa-search" aria-hidden="true"></i></button>
+            </fieldset>
+        </div>
+    </div>
+    
     <div class="menu">
         <app-menu></app-menu>
         <a style="z-index:1000" href="tel:+79162278742">+7 (916) 227-87-42</a>
