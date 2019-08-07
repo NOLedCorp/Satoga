@@ -26,8 +26,8 @@ export class AdminService{
         return this.http.post<any>(this.baseUrl + 'Key=add-section', section);
     }
 
-    public addMethod(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=add-method', enter);
+    public addItem(enter, table){
+        return this.http.post<any>(this.baseUrl + 'Key=add-item&Table='+table, enter);
     }
 
     public addInventory(enter){
@@ -101,7 +101,7 @@ export class AdminService{
      * @param data изображение (FormData)
      * @param column столбец таблицы в который нужно вставить ссылку на файл
      */
-    UploadFile(id, type:UploadTypes, data, column) {
+    UploadFile(id, type:UploadTypes, data, column='Photo') {
         return this.http.post<string>(this.baseUrl + 'Key=upload-file&Id='+id+'&Type='+type+'&Column='+column, data, {
           reportProgress:true,
           observe:'events'

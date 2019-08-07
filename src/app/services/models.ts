@@ -12,6 +12,9 @@ export enum PeriodicTypes{
 
 
 export enum UploadTypes{
-  Catalog = 'catalog_of_solids',
-  Experiment = 'experiment'
+  Section = 'sections',
+  Product = 'goods',
+  Photo = 'photoes',
+  Video = 'videos',
+  Article = 'articles'
 }

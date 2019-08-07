@@ -41,6 +41,7 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { AddVideoComponent } from './add-video/add-video.component';
 import { AddPhotoComponent } from './add-photo/add-photo.component';
 import { ApiInterceptor } from './api.interceptor';
+import { DocumentComponent } from './document/document.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { ApiInterceptor } from './api.interceptor';
     AddProductComponent,
     AddArticleComponent,
     AddVideoComponent,
-    AddPhotoComponent
+    AddPhotoComponent,
+    DocumentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,56 @@
-<p>
-  add-product works!
-</p>
+<form [formGroup]="addForm" class="mb-4">
+    <h3 class="header d-flex justify-content-between align-items-center" style="font-weight:400">Добавление товара<i *ngIf="show" class="fas fa-times" style="font-size: 1.5rem;" (click)="ms.close()"></i></h3>
+    
+    <div class="form-group">
+        <label [ngClass]="{'text-danger':(submitted && f.Name.errors)}" for="DES">Название</label>
+        <input [ngClass]="{'border-danger':(submitted && f.Name.errors)}" (change)="upd(Name)" formControlName="Name" class="form-control" id="Name" placeholder="Название" #Name>
+        <small  class="form-text text-danger" *ngIf="submitted && f.Name.errors && f.Name.errors.required">Укажите название</small>
+    </div>
+    <div class="form-group">
+        <label [ngClass]="{'text-danger':(submitted && f.SectionId.errors)}" for="DES">Раздел</label>
+        <select [ngClass]="{'border-danger':(submitted && f.SectionId.errors)}" (change)="upd(SectionId)" formControlName="SectionId" class="form-control"  id="SectionId" #SectionId>
+          <option value="{{s.Id}}" *ngFor="let s of sections">{{s.Name}}</option>
+        </select>
+        <small  class="form-text text-danger" *ngIf="submitted && f.SectionId.errors && f.SectionId.errors.required">Укажите раздел</small>
+    </div>
+    <div class="form-group">
+      <label for="na" [ngClass]="{'text-danger':(submitted && f.Description.errors)}">Описание</label>
+      <input [ngClass]="{'border-danger':(submitted && f.Description.errors)}" (change)="upd(Description)" formControlName="Description" class="form-control" id="Description" placeholder="Описание" #Description>
+      <small  class="form-text text-danger" *ngIf="submitted && f.Description.errors && f.Description.errors.required">Введите описание</small>
+    </div>
+    
+    <div class="d-flex justify-content-between">
+        <div class="form-group d-flex align-items-center">
+          <label for="InStock">В наличии</label>
+          <input type="checkbox"  (change)="upd(InStock)" formControlName="InStock" class="form-control" id="InStock"  #InStock>
+        </div>
+        <div class="form-group d-flex align-items-center">
+            <label for="InStock">Отобразить в слайдере</label>
+            <input type="checkbox"  (change)="upd(Main)" formControlName="Main" class="form-control" id="Main"  #Main>
+        </div>
+      
+    </div>
+    <div class="form-group">
+        <label [ngClass]="{'text-danger':(submitted && f.Price.errors)}" for="DES">Цена</label>
+        <input [ngClass]="{'border-danger':(submitted && f.Price.errors)}" (change)="upd(Price)" formControlName="Price" class="form-control" type="number" id="Price" placeholder="Цена" #Price>
+        <small  class="form-text text-danger" *ngIf="submitted && f.Price.errors && f.Price.errors.required">Укажите цену</small>
+    </div>
+    <div class="form-group">
+        <label for="na" [ngClass]="{'text-danger':(submitted && f.FullDescription.errors)}">Подробное описание</label>
+        <textarea [ngClass]="{'border-danger':(submitted && f.FullDescription.errors)}" (change)="upd(FullDescription)" formControlName="FullDescription" class="form-control" id="FullDescription" placeholder="Подробное описание" rows="5" #FullDescription></textarea>
+        <small  class="form-text text-danger" *ngIf="submitted && f.FullDescription.errors && f.FullDescription.errors.required">Введите описание</small>
+      </div>
+    <div class="form-group d-flex flex-column align-items-start">
+        <label for="exampleInputEmail1" [ngClass]="{'text-danger':(submitted && f.Photo.errors)}">Фотография</label>
+        <document *ngIf="v.Photo=='' && item && item.Photo" [type]="'img'" [href]="item.Photo"></document>
+        <span>{{v.Photo==''?'':getValue(v.Photo)}}<button class="btn btn-link" (click)="Photo.click()">{{!item && v.Photo=='' || item && item.Photo==''?'Загрузить':'Изменить'}} фотографию</button></span>
+        <input class="d-none" id='Photo' type="file" (change)="setFile($event)" formControlName="Photo" #Photo>
+        <small  class="form-text text-danger" *ngIf="submitted && f.Photo.errors && f.Photo.errors.pattern">Файл с расширением .png или .jpg</small>
+    </div>
+    
+    
+    
+    
+    <button *ngIf="!item || upd_length>0" class="btn btn-primary" (click)="send()">Отправить</button>
+  </form>
+  

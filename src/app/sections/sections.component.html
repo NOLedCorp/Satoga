@@ -2,13 +2,19 @@
   <h2 class="d-flex justify-content-center">Разделы</h2>
     <div class="row flex-container">
       <div class="item" *ngFor="let i of items">
-        <h3>{{i.Name}}</h3>
-        <p>{{i.Description}}</p>
+        <div>
+            <h3>{{i.Name}}</h3>
+            <p>{{i.Description}}</p>
+        </div>
+        
         <img src="{{i.Photo}}" alt="">
-        <span>от {{i.MinPrice}} руб.</span>
-        <div class="btn btn-dark" routerLink="/section/{{i.Id}}">Просмотреть раздел</div>
+        <div>
+          <p class="m-0">от {{i.MinPrice}} руб.</p>
+          <div class="btn btn-dark" routerLink="/section/{{i.Id}}">Просмотреть раздел</div>
+        </div>
+        
       </div>
-      <div class="item plus" *ngIf="us.user" (click)="ms.open('section')" style="min-height: 300px">
+      <div class="item plus" *ngIf="us.user" (click)="ms.open('section', items)" style="min-height: 300px">
         <i class="fas fa-plus"></i>
       </div>
     </div>
