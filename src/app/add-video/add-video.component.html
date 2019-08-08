@@ -1,3 +1,39 @@
-<p>
-  add-video works!
-</p>
+<form [formGroup]="addForm" class="mb-4">
+  <h3 class="header d-flex justify-content-between align-items-center" style="font-weight:400">Добавление видео<i *ngIf="show" class="fas fa-times" style="font-size: 1.5rem;" (click)="ms.close()"></i></h3>
+  
+  <div class="form-group">
+      <label [ngClass]="{'text-danger':(submitted && f.Name.errors)}" for="DES">Название</label>
+      <input [ngClass]="{'border-danger':(submitted && f.Name.errors)}" (change)="upd(Name)" formControlName="Name" class="form-control" id="conditions" placeholder="Название" #Name>
+      <small  class="form-text text-danger" *ngIf="submitted && f.Name.errors && f.Name.errors.required">Укажите название</small>
+  </div>
+  <div class="form-group">
+    <label for="na" [ngClass]="{'text-danger':(submitted && f.Path.errors)}">Ссылка на Youtube</label>
+    <input [ngClass]="{'border-danger':(submitted && f.Path.errors)}" (change)="upd(Path)" formControlName="Path" class="form-control" id="Path" placeholder="Path" #Path>
+    <small  class="form-text text-danger" *ngIf="submitted && f.Path.errors && f.Path.errors.required">Укажите ссылку</small>
+  </div>
+  
+  <div class="form-group" *ngIf="goods.length">
+    <label [ngClass]="{'text-danger':(submitted && f.GoodId.errors)}" for="DES">Товар</label>
+    <prog-select [errors]="submitted && f.GoodId.errors" [items]="goods" formControlName="GoodId" id="GoodId" #GoodId></prog-select>
+    <small  class="form-text text-danger" *ngIf="submitted && f.GoodId.errors && f.GoodId.errors.required">Укажите товар</small>
+  </div>
+  <!-- <div class="form-group" *ngIf="goods.length">
+    <label [ngClass]="{'text-danger':(submitted && f.GoodId.errors)}" for="DES">Товар</label>
+    <select [ngClass]="{'border-danger':(submitted && f.GoodId.errors)}" (change)="upd(GoodId)" formControlName="GoodId" class="form-control"  id="GoodId" #GoodId>
+      <option [value]="s.Id" *ngFor="let s of goods">{{s.Name}}</option>
+    </select>
+    <small  class="form-text text-danger" *ngIf="submitted && f.GoodId.errors && f.GoodId.errors.required">Укажите товар</small>
+  </div> -->
+  <!-- <div class="form-group d-flex flex-column align-items-start">
+      <label for="exampleInputEmail1" [ngClass]="{'text-danger':(submitted && f.Photo.errors)}">Фотография</label>
+      <document *ngIf="v.Photo=='' && item && item.Photo" [type]="'img'" [href]="item.Photo"></document>
+      <span>{{v.Photo==''?'':getValue(v.Photo)}}<button class="btn btn-link" (click)="Photo.click()">{{!item && v.Photo=='' || item && item.Photo==''?'Загрузить':'Изменить'}} фотографию</button></span>
+      <input class="d-none" id='Photo' type="file" (change)="setFile($event)" formControlName="Photo" #Photo>
+      <small  class="form-text text-danger" *ngIf="submitted && f.Photo.errors && f.Photo.errors.pattern">Файл с расширением .png или .jpg</small>
+  </div> -->
+  
+  
+  
+  
+  <button *ngIf="!item || upd_length>0" class="btn btn-primary" (click)="send()">Отправить</button>
+</form>

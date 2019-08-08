@@ -12,34 +12,35 @@ import { ModalService } from '../services/modal.service';
 })
 export class VideosComponent implements OnInit {
   videos:any = [
-    {
-      Path: 'https://youtu.be/uGBZ_--HPcM'
-    },
-    {
-      Path: 'https://youtu.be/uGBZ_--HPcM'
-    },
-    {
-      Path: 'https://youtu.be/uGBZ_--HPcM'
-    },
-    {
-      Path: 'https://youtu.be/uGBZ_--HPcM'
-    },
-    {
-      Path: 'https://youtu.be/uGBZ_--HPcM'
-    },
-    {
-      Path: 'https://youtu.be/uGBZ_--HPcM'
-    }
+    // {
+    //   Path: 'https://youtu.be/uGBZ_--HPcM'
+    // },
+    // {
+    //   Path: 'https://youtu.be/uGBZ_--HPcM'
+    // },
+    // {
+    //   Path: 'https://youtu.be/uGBZ_--HPcM'
+    // },
+    // {
+    //   Path: 'https://youtu.be/uGBZ_--HPcM'
+    // },
+    // {
+    //   Path: 'https://youtu.be/uGBZ_--HPcM'
+    // },
+    // {
+    //   Path: 'https://youtu.be/uGBZ_--HPcM'
+    // }
   ]
   constructor(public snt:DomSanitizer, public ms:ModalService, private ss:SatogaService, private ls:LoadService, public us:UserService) { }
 
   ngOnInit() {
     this.ls.showLoad = true;
-    this.ss.getPhotoes().subscribe(items => {
+    this.ss.getVideos().subscribe(items => {
       if(items && items.lenght>0){
         this.videos = items;
         
       }
+      this.videos = items;
       this.videos.forEach(v => {
         v.Path = v.Path.replace('youtu.be/','www.youtube.com/embed/');
       })
