@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS photos (
 	Id int(10) PRIMARY KEY AUTO_INCREMENT,
     Name varchar(255) NULL,
     GoodId varchar(255) NULL,
-    Path varchar(255) NOT NULL
+    Photo varchar(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS videos (

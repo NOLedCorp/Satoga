@@ -11,6 +11,8 @@ export class AddService{
     public fb:FormBuilder = new FormBuilder();
     public submitted = false;
     public files = {};
+    public tpattern=/(\.pdf)$/i;
+    public ipattern=/(\.png|\.jpg)$/i;
     constructor(){
 
     }

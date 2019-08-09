@@ -14,8 +14,7 @@ import { HttpEventType } from '@angular/common/http';
   styleUrls: ['./add-article.component.less']
 })
 export class AddArticleComponent extends AddService implements OnInit {
-  tpattern=/(\.pdf)$/i;
-  ipattern=/(\.png|\.jpg)$/i;
+  
   goods = [];
   constructor(private as:AdminService, private ms:ModalService, private ss:SatogaService, private ls:LoadService) { 
     super();
@@ -24,8 +23,8 @@ export class AddArticleComponent extends AddService implements OnInit {
       Author: ['', Validators.required],
       GoodId: [''],
       Description: [''],
-      Path: ['', Validators.pattern(this.tpattern)],
-      Photo: ['', Validators.pattern(this.ipattern)]
+      Path: ['', [Validators.required, Validators.pattern(this.tpattern)]],
+      Photo: ['', [Validators.required, Validators.pattern(this.ipattern)]]
     });
   }
 
