@@ -1,6 +1,10 @@
 <div class="sections" style="margin-top: 100px;"  *ngIf="items.length>0 || us.user">
-  <h2 class="d-flex justify-content-center">Разделы</h2>
+  <!-- <h2 class="d-flex justify-content-center">Разделы</h2> -->
+  <div>
+    <div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('section', items)">Добавить</div>
+  </div>
     <div class="row flex-container">
+      
       <div class="item" *ngFor="let i of items">
         <div>
             <h3>{{i.Name}}</h3>
@@ -13,9 +17,6 @@
           <div class="btn btn-dark" routerLink="/section/{{i.Id}}">Просмотреть раздел</div>
         </div>
         
-      </div>
-      <div class="item plus" *ngIf="us.user" (click)="ms.open('section', items)" style="min-height: 300px">
-        <i class="fas fa-plus"></i>
       </div>
     </div>
 </div>

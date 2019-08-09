@@ -62,6 +62,11 @@ export class CarouselComponent implements OnInit {
         this.ls.showLoad = false;
         this.slides = document.querySelector('.carousel-body').querySelectorAll('.slide');
         this.headers = document.querySelector('.carousel-header').querySelectorAll('.slide');
+        console.log(this.slides);
+      }else{
+        this.ls.showLoad = false;
+        this.slides = document.querySelector('.carousel-body').querySelectorAll('.slide');
+        this.headers = document.querySelector('.carousel-header').querySelectorAll('.slide');
       }
       
     })

@@ -1,5 +1,5 @@
 <div class="container px-2">
-  <h3>Товары</h3>
+  <h3 class="d-flex align-items-center">Товары <div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('product', items)">Добавить</div></h3>
   <div *ngIf="items.length>0" class="sort">
     <div>
       <span (click)="changeSort()">Сортировать по цене<i class="fas {{getSort()}}"></i></span>
@@ -18,9 +18,6 @@
           <div class="btn btn-lt" (click)="ms.open('form', i)"><span>Отправить заявку</span></div>
       </div>
       
-    </div>
-    <div class="item plus" *ngIf="us.user" (click)="ms.open('product', items)" style="min-height: 300px">
-      <i class="fas fa-plus"></i>
     </div>
   </div>
 </div>
