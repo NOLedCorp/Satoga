@@ -27,7 +27,7 @@ export class ProgSelectComponent implements ControlValueAccessor, OnInit, OnChan
 
   @HostListener('document:click', ['$event']) doSth($event){
     if(this.show){
-      if($event.target.id!='field'){
+      if($event.target.id!='field' && $event.target.id!='open'){
         this.show=false;
       }
     }
