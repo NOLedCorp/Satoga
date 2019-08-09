@@ -11,6 +11,11 @@
       <input [ngClass]="{'border-danger':(submitted && f.Author.errors)}" (change)="upd(Author)" formControlName="Author" class="form-control" id="conditions" placeholder="Автор" #Author>
       <small  class="form-text text-danger" *ngIf="submitted && f.Author.errors && f.Author.errors.required">Укажите название</small>
   </div>
+  <div class="form-group" *ngIf="goods.length">
+    <label [ngClass]="{'text-danger':(submitted && f.GoodId.errors)}" for="DES">Товар</label>
+    <prog-select [errors]="submitted && f.GoodId.errors" [items]="goods" formControlName="GoodId" id="GoodId" #GoodId></prog-select>
+    <small  class="form-text text-danger" *ngIf="submitted && f.GoodId.errors && f.GoodId.errors.required">Укажите товар</small>
+  </div>
   <div class="form-group">
     <label for="na" [ngClass]="{'text-danger':(submitted && f.Description.errors)}">Описание</label>
     <textarea [ngClass]="{'border-danger':(submitted && f.Description.errors)}" (change)="upd(Description)" formControlName="Description" class="form-control" id="Description" placeholder="Описание" #Description rows="5"></textarea>  <small  class="form-text text-danger" *ngIf="submitted && f.Description.errors && f.Description.errors.required">Введите описание</small>
