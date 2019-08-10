@@ -36,7 +36,7 @@ export class    AddService{
     }
 
     upd(item){
-        this.update[item.id]=item.value;
+        this.update[item.id]=this.addForm.get(item.id).value;
        
     }
 

@@ -2,6 +2,7 @@
 import { Router, NavigationEnd } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/internal/operators'
 // import { OnInit } from '@angular/core';
 
 @Injectable()
@@ -17,7 +18,14 @@ export class SatogaService{
     }
 
     public getGoods(){
-        return this.http.get<any>(this.baseUrl + 'Key=get-goods');
+        return this.http.get<any>(this.baseUrl + 'Key=get-goods').pipe(
+            tap(goods => {
+                goods.forEach(element => {
+                   element.Main = Number(element.Main); 
+                   element.InStock = Number(element.InStock);
+                });
+            })
+        );
     }
 
     public getMain(){

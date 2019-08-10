@@ -21,7 +21,6 @@ export class AddProductComponent extends AddService implements OnInit {
 
   ngOnInit() {
     this.ss.getSections().subscribe(x => {
-      console.log(x);
       this.sections = x;
     })
     this.addForm = this.fb.group({
@@ -34,12 +33,15 @@ export class AddProductComponent extends AddService implements OnInit {
       Price: ['', Validators.required],
       Main: [''],
     });
+
+    if(this.item){
+      this.addForm.patchValue(this.item);
+    }
     
   }
   send(){
     
     this.submitted = true;
-    console.log(this.addForm);
     if(this.addForm.invalid){
       return;
     }
@@ -62,11 +64,48 @@ export class AddProductComponent extends AddService implements OnInit {
               this.submitted = false;
               let res = Object.assign({Id:x},this.v);
               res['Photo'] = event.body;
-              this.items.push(res);
-              this.ms.close();
+              this.items.unshift(res);
             }
             
           })
+        })
+      })
+    }else{
+      let keys = Object.keys(this.files).filter(file => !!this.files[file]);
+      let k = keys.length;
+      if(Object.keys(this.update).length>0){
+        this.update['Id']=this.item.Id;
+        console.log(this.update);
+        this.as.updateItem(this.update, UploadTypes.Product).subscribe(x => {
+          if(k==0){
+            this.ls.showLoad = false;
+            this.submitted = false;
+            this.item = Object.assign(this.item, this.update);
+            console.log(this.update);
+            this.update = {};
+          }
+        })
+      }
+      keys.forEach(f => {
+        let formData = new FormData();
+        formData.append('Data', this.files[f]);
+        this.as.UploadFile(this.item.Id, UploadTypes.Product, formData, f).subscribe(event=>{
+          if(event.type == HttpEventType.UploadProgress){
+            this.ls.load = Math.round(event.loaded/event.total * 100);
+            
+          }
+          else if(event.type == HttpEventType.Response){
+            k--;
+            if(k==0 && Object.keys(this.update).length==0){
+              this.item.Photo = event.body[0];
+              this.ls.showLoad = false;
+              this.submitted = false;
+              this.files = {};
+            }
+            
+            
+          }
+          
         })
       })
     }

@@ -14,9 +14,10 @@
       <div class="price">
         <b>{{i.Price}} руб.</b> 
       </div>
-      <div class="btns">
+      <div class="btns" *ngIf="!us.user">
           <div class="btn btn-lt" (click)="ms.open('form', i)"><span>Отправить заявку</span></div>
       </div>
+      <div class="btn btn-new btn-dark" style="opacity: 1; position: relative; top:0; margin-top: 10px; " *ngIf="us.user" (click)="ms.open('upd-product', i)">Изменить</div>
       
     </div>
   </div>

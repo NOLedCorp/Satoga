@@ -42,9 +42,9 @@
       </div>
     <div class="form-group d-flex flex-column align-items-start">
         <label for="exampleInputEmail1" [ngClass]="{'text-danger':(submitted && f.Photo.errors)}">Фотография</label>
-        <document *ngIf="v.Photo=='' && item && item.Photo" [type]="'img'" [href]="item.Photo"></document>
+        <document *ngIf="!files['Photo'] && item && item.Photo" [type]="'img'" [href]="item.Photo"></document>
         <span>{{v.Photo==''?'':getValue(v.Photo)}}<button class="btn btn-link" (click)="Photo.click()">{{!item && v.Photo=='' || item && item.Photo==''?'Загрузить':'Изменить'}} фотографию</button></span>
-        <input class="d-none" id='Photo' type="file" (change)="setFile($event)" formControlName="Photo" #Photo>
+        <input class="d-none" id='Photo' type="file" (change)="setFile($event)" #Photo>
         <small  class="form-text text-danger" *ngIf="submitted && f.Photo.errors && f.Photo.errors.pattern">Файл с расширением .png или .jpg</small>
     </div>
     
