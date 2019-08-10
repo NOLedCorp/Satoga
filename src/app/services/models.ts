@@ -14,7 +14,7 @@ export enum PeriodicTypes{
 export enum UploadTypes{
   Section = 'sections',
   Product = 'goods',
-  Photo = 'photoes',
+  Photo = 'photos',
   Video = 'videos',
   Article = 'articles'
 }

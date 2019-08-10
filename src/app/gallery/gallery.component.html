@@ -9,7 +9,7 @@
       </div>
       
       <h3 class="mt-2">{{i.Name}}</h3>
-      
+      <div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('upd-photo', i)">Изменить</div>
     </div>
   </div>
   

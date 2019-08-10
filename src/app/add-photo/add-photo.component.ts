@@ -40,7 +40,7 @@ export class AddPhotoComponent extends AddService implements OnInit {
     if(this.addForm.invalid){
       return;
     }
-    
+    console.log(this.v);
     if(!this.item){
       this.ls.showLoad = true;
       this.ls.load = 0;
@@ -71,6 +71,7 @@ export class AddPhotoComponent extends AddService implements OnInit {
       let k = keys.length;
       if(Object.keys(this.update).length>0){
         this.update['Id']=this.item.Id;
+        console.log(this.update);
         this.as.updateItem(this.update, UploadTypes.Photo).subscribe(x => {
           this.update = {};
           if(k==0){
@@ -83,7 +84,7 @@ export class AddPhotoComponent extends AddService implements OnInit {
       keys.forEach(f => {
         let formData = new FormData();
         formData.append('Data', this.files[f]);
-        this.as.UploadFile(this.item.Id, UploadTypes.Article, formData, f).subscribe(event=>{
+        this.as.UploadFile(this.item.Id, UploadTypes.Photo, formData, f).subscribe(event=>{
           if(event.type == HttpEventType.UploadProgress){
             this.ls.load = Math.round(event.loaded/event.total * 100);
             
@@ -91,10 +92,10 @@ export class AddPhotoComponent extends AddService implements OnInit {
           else if(event.type == HttpEventType.Response){
             k--;
             if(k==0 && Object.keys(this.update).length==0){
+              this.item.Photo = event.body[0];
               this.ls.showLoad = false;
               this.submitted = false;
               this.files = {};
-              this.ms.close();
             }
             
             
