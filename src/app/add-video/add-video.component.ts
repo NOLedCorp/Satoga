@@ -107,6 +107,9 @@ export class AddVideoComponent extends AddService implements OnInit {
       Path: ['', Validators.required],
       GoodId: [null]
     });
+    if(this.item){
+      this.addForm.patchValue(this.item);
+    }
     
   }
   send(){
@@ -115,37 +118,30 @@ export class AddVideoComponent extends AddService implements OnInit {
     if(this.addForm.invalid){
       return;
     }
-    
+    this.ls.showLoad = true;
     if(!this.item){
-      this.ls.showLoad = true;
+      
       this.as.addItem(this.v, UploadTypes.Video).subscribe(x => {
         let res = Object.assign({Id:x},this.v);
-        res.Path = res.Path.replace('youtu.be/','www.youtube.com/embed/')
+        res.Path = res.Path.replace('youtu.be/','www.youtube.com/embed/');
         this.items.push(res);
         this.ls.showLoad = false;
         this.submitted = false;
         this.ms.close();
-        // Object.keys(this.files).filter(file => !!this.files[file]).forEach(f => {
-        //   let formData = new FormData();
-        //   formData.append('Data', this.files[f]);
-        //   this.as.UploadFile(x, UploadTypes.Video, formData).subscribe(event=>{
-        //     if(event.type == HttpEventType.UploadProgress){
-        //       this.ls.load = Math.round(event.loaded/event.total * 100);
-              
-        //     }
-        //     else if(event.type == HttpEventType.Response){
-              
-        //       this.ls.showLoad = false;
-        //       this.submitted = false;
-        //       let res = Object.assign({Id:x},this.v);
-        //       res['Photo'] = event.body;
-        //       this.items.push(res);
-        //       this.ms.close();
-        //     }
-            
-        //   })
-        // })
       })
+    }else{
+      if(Object.keys(this.update).length){
+        this.update['Id']=this.item.Id;
+        this.as.updateItem(this.update, UploadTypes.Video).subscribe(x => {
+          
+          this.update['Path'] = this.update['Path'].replace('youtu.be/','www.youtube.com/embed/');
+          this.item = Object.assign(this.item, this.update);
+          console.log(this.update);
+          this.update = {};
+          this.ls.showLoad = false;
+          this.submitted = false;
+        })
+      }
     }
   }
 
