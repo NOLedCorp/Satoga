@@ -100,9 +100,6 @@ export class HomeComponent implements OnInit {
       }
       this.ls.showLoad=false;
     })
-    this.as.addSection(null).subscribe(x => {
-      console.log(x);
-    })
   }
 
   showCatalog(){

@@ -71,7 +71,7 @@ export class AddPhotoComponent extends AddService implements OnInit {
       let k = keys.length;
       if(Object.keys(this.update).length>0){
         this.update['Id']=this.item.Id;
-        this.as.updateExperiment(this.update).subscribe(x => {
+        this.as.updateItem(this.update, UploadTypes.Photo).subscribe(x => {
           this.update = {};
           if(k==0){
             this.ls.showLoad = false;

@@ -102,6 +102,26 @@ input[type=checkbox]{
     }
 }
 
+.item{
+    position: relative;
+    &:hover{
+        .btn-new{
+           // top: 100%;
+            opacity: 1;
+        }
+    }
+    .btn-new{
+        margin: 0;              
+        position: absolute;
+        top: calc(100% - 43px);
+        opacity: 0;
+        transition: 0.3s;
+        width: calc(100% - 10px);
+        left: 5px;
+
+    }
+}
+
 .header{
     margin-bottom: 35px;
 }

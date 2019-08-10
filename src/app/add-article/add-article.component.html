@@ -3,12 +3,12 @@
   
   <div class="form-group">
       <label [ngClass]="{'text-danger':(submitted && f.Name.errors)}" for="DES">Название</label>
-      <input [ngClass]="{'border-danger':(submitted && f.Name.errors)}" (change)="upd(Name)" formControlName="Name" class="form-control" id="conditions" placeholder="Название" #Name>
+      <input [ngClass]="{'border-danger':(submitted && f.Name.errors)}" (change)="upd(Name)" formControlName="Name" class="form-control" id="Name" placeholder="Название" #Name>
       <small  class="form-text text-danger" *ngIf="submitted && f.Name.errors && f.Name.errors.required">Укажите название</small>
   </div>
   <div class="form-group">
       <label [ngClass]="{'text-danger':(submitted && f.Author.errors)}" for="DES">Автор</label>
-      <input [ngClass]="{'border-danger':(submitted && f.Author.errors)}" (change)="upd(Author)" formControlName="Author" class="form-control" id="conditions" placeholder="Автор" #Author>
+      <input [ngClass]="{'border-danger':(submitted && f.Author.errors)}" (change)="upd(Author)" formControlName="Author" class="form-control" id="Author" placeholder="Автор" #Author>
       <small  class="form-text text-danger" *ngIf="submitted && f.Author.errors && f.Author.errors.required">Укажите название</small>
   </div>
   <div class="form-group" *ngIf="goods.length">
@@ -22,16 +22,16 @@
   </div>
   <div class="form-group d-flex flex-column align-items-start">
       <label for="exampleInputEmail1" [ngClass]="{'text-danger':(submitted && f.Photo.errors)}">Фотография</label>
-      <document *ngIf="v.Photo=='' && item && item.Photo" [type]="'img'" [href]="item.Photo"></document>
+      <document *ngIf="!files['Photo'] && item && item.Photo" [type]="'img'" [href]="item.Photo"></document>
       <span>{{v.Photo==''?'':getValue(v.Photo)}}<button class="btn btn-link" (click)="Photo.click()">{{!item && v.Photo=='' || item && item.Photo==''?'Загрузить':'Изменить'}} фотографию</button></span>
-      <input class="d-none" id='Photo' type="file" (change)="setFile($event)" formControlName="Photo" #Photo>
+      <input class="d-none" id='Photo' type="file" (change)="setFile($event)" #Photo>
       <small  class="form-text text-danger" *ngIf="submitted && f.Photo.errors && f.Photo.errors.pattern">Файл с расширением .png или .jpg</small>
   </div>
   <div class="form-group d-flex flex-column align-items-start">
       <label for="exampleInputEmail1" [ngClass]="{'text-danger':(submitted && f.Path.errors)}">Статья (pdf)</label>
-      <document *ngIf="v.Path=='' && item && item.Path" [type]="'doc'" [href]="item.Path"></document>
+      <document *ngIf="!files['Path'] && item && item.Path" [type]="'doc'" [href]="item.Path"></document>
       <span>{{v.Path==''?'':getValue(v.Path)}}<button class="btn btn-link" (click)="Path.click()">{{!item && v.Path=='' || item && item.Path==''?'Загрузить':'Изменить'}} файл статьи</button></span>
-      <input class="d-none" id='Path' type="file" (change)="setFile($event)" formControlName="Path" #Path>
+      <input class="d-none" id='Path' type="file" (change)="setFile($event)" #Path>
       <small  class="form-text text-danger" *ngIf="submitted && f.Path.errors && f.Path.errors.pattern">Файл с расширением .pdf</small>
   </div>
   

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 import { AddService } from '../services/add.service';
 import { Validators } from '@angular/forms';
 import { LoadService } from '../services/load.service';
@@ -26,6 +26,8 @@ export class AddArticleComponent extends AddService implements OnInit {
       Path: ['', [Validators.required, Validators.pattern(this.tpattern)]],
       Photo: ['', [Validators.required, Validators.pattern(this.ipattern)]]
     });
+    this.addForm.valueChanges.subscribe(ch => {
+  })
   }
 
   ngOnInit() {
@@ -34,6 +36,8 @@ export class AddArticleComponent extends AddService implements OnInit {
       if(this.item){
         this.addForm.patchValue(this.item);
       }
+      console.log(this.v);
+
     })
     
   }
@@ -42,6 +46,7 @@ export class AddArticleComponent extends AddService implements OnInit {
     
     this.submitted = true;
     if(this.addForm.invalid){
+
       return;
     }
     
@@ -80,14 +85,14 @@ export class AddArticleComponent extends AddService implements OnInit {
     }else{
       let keys = Object.keys(this.files).filter(file => !!this.files[file]);
       let k = keys.length;
-      if(Object.keys(this.update).length>0){
+      if(Object.keys(this.update).length){
         this.update['Id']=this.item.Id;
-        this.as.updateExperiment(this.update).subscribe(x => {
+        console.log(this.update);
+        this.as.updateItem(this.update, UploadTypes.Article).subscribe(x => {
           this.update = {};
           if(k==0){
             this.ls.showLoad = false;
             this.submitted = false;
-            this.ngOnInit();
           }
         })
       }

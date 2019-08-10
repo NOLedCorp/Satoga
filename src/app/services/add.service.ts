@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
 @Injectable()
-export class AddService{
+export class    AddService{
     @Input() item:any;
     @Input() items:any;
     public update = {};
@@ -14,7 +14,7 @@ export class AddService{
     public tpattern=/(\.pdf)$/i;
     public ipattern=/(\.png|\.jpg)$/i;
     constructor(){
-
+        
     }
 
     getValue(v){
@@ -24,7 +24,11 @@ export class AddService{
         
     }
     setFile(e){
-      this.files[e.target.id]=e.target.files[0];
+        let n = {};
+        n[e.target.id]=e.target.value;
+        this.addForm.patchValue(n);
+        this.files[e.target.id]=e.target.files[0];
+      
     }
 
     updArray(name, arr){
@@ -35,6 +39,7 @@ export class AddService{
         this.update[item.id]=item.value;
        
     }
+
 
     deleteItem(parent, arr, name, id){
         parent[arr] = parent[arr].filter(x => x[name]!=id);

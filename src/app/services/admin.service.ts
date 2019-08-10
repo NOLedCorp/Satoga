@@ -12,86 +12,16 @@ import { UploadTypes } from './models';
 export class AdminService{
     baseUrl:string='http://client.nomokoiw.beget.tech/satoga/admin_controller.php?';
 
-    constructor(private http: HttpClient, ){
-        
-
-        
+    constructor(private http: HttpClient, ){  
     }
 
-
-    
-    
-
-    public addSection(section){
-        return this.http.post<any>(this.baseUrl + 'Key=add-section', section);
-    }
 
     public addItem(enter, table){
         return this.http.post<any>(this.baseUrl + 'Key=add-item&Table='+table, enter);
     }
 
-    public addInventory(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=add-inventory', enter);
-    }
-
-    public addAuthor(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=add-author', enter);
-    }
-
-    public addCrochet(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=add-crochet', enter);
-    }
-
-    public addGrowing(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=add-growing', enter);
-    }
-
-    public addPeriodical(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=add-periodical', enter);
-    }
-
-    public addExperiment(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=add-experiment', enter);
-    }
-
-    public addCatalog(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=add-catalog', enter);
-    }
-
-    public updateAuthor(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=update-author', enter);
-    }
-
-    public updateCrochet(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=update-crochet', enter);
-    }
-
-    public updateMethod(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=update-method', enter);
-    }
-
-    public updateInventory(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=update-inventory', enter);
-    }
-
-    public updateSolid(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=update-solid', enter);
-    }
-
-    public updateGrowing(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=update-growing', enter);
-    }
-
-    public updatePeriodical(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=update-periodical', enter);
-    }
-
-    public updateExperiment(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=update-experiment', enter);
-    }
-
-    public updateCatalog(enter){
-        return this.http.post<any>(this.baseUrl + 'Key=update-catalog', enter);
+    public updateItem(enter, table){
+        return this.http.post<any>(this.baseUrl + 'Key=update-item&Table='+table, enter);
     }
 
     /**

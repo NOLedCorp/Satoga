@@ -5,8 +5,12 @@
     <div class="item" *ngFor="let i of articles">
       <img *ngIf="i.Photo" src="{{i.Photo}}" alt="{{i.Name}}">
       <h3>{{i.Name}}</h3>
-      <span><i class="fas fa-user"></i> {{i.Author}}</span>
-      <a *ngIf="i.Path" href="{{i.Path}}" target="blank" class="eye" ><i class="far fa-eye"></i></a>
+      <span ><i class="fas fa-user"></i> {{i.Author}}</span>
+      <a *ngIf="i.Path" href="{{i.Path}}" target="blank" class="eye" ><i class="far fa-eye"></i> 
+        
+      </a>
+      <div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('upd-article', i)">Изменить</div>
+      
     </div>
   </div>
   
