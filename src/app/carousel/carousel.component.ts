@@ -8,44 +8,7 @@ import { SatogaService } from '../services/satoga.service';
   styleUrls: ['./carousel.component.less']
 })
 export class CarouselComponent implements OnInit {
-  items:any = [
-    {
-      Id:1,
-      Photo: '../../assets/images/lozha2.jpg',
-      InStock: 0,
-      Name: 'Ложа для СКС | C-205 P',
-      Description: 'Полупистолетная с щеткой. Орех',
-      FullDescription: 'Классическая охотничья ложа для карабина СКС. Изготавливается из высококачественного ореха. Резиновый амортизатор.',
-      Price: 18000
-    },
-    {
-      Id:2,
-      Photo: '../../assets/images/lozha2.jpg',
-      Name: 'Ложа для СКС | C-205 P',
-      InStock: 1,
-      Description: 'Полупистолетная с щеткой. Орех',
-      FullDescription: 'Классическая охотничья ложа для карабина СКС. Изготавливается из высококачественного ореха. Резиновый амортизатор.',
-      Price: 18000
-    },
-    {
-      Id:3,
-      Photo: '../../assets/images/lozha2.jpg',
-      Name: 'Ложа для СКС | C-205 P',
-      InStock: 1,
-      Description: 'Полупистолетная с щеткой. Орех',
-      FullDescription: 'Классическая охотничья ложа для карабина СКС. Изготавливается из высококачественного ореха. Резиновый амортизатор.',
-      Price: 18000
-    },
-    {
-      Id:4,
-      Photo: '../../assets/images/lozha2.jpg',
-      Name: 'Ложа для СКС | C-205 P',
-      InStock: 1,
-      Description: 'Полупистолетная с щеткой. Орех',
-      FullDescription: 'Классическая охотничья ложа для карабина СКС. Изготавливается из высококачественного ореха. Резиновый амортизатор.',
-      Price: 18000
-    }
-  ];
+  items:any = [];
   slides:NodeListOf<Element>;
   headers:NodeListOf<Element>;
   current = 0;
@@ -55,18 +18,16 @@ export class CarouselComponent implements OnInit {
     this.ls.showLoad = true;
     this.ss.getMain().subscribe(x => {
       if(x){
-        if(x && x.length>0){
-          this.items = x;
-        }
-        
+        this.items = x;
         this.ls.showLoad = false;
-        this.slides = document.querySelector('.carousel-body').querySelectorAll('.slide');
-        this.headers = document.querySelector('.carousel-header').querySelectorAll('.slide');
-        console.log(this.slides);
+        
+        setTimeout(()=> {
+          this.slides = document.querySelector('.carousel-body').querySelectorAll('.slide');
+          this.headers = document.querySelector('.carousel-header').querySelectorAll('.slide');
+        }, 100)
       }else{
         this.ls.showLoad = false;
-        this.slides = document.querySelector('.carousel-body').querySelectorAll('.slide');
-        this.headers = document.querySelector('.carousel-header').querySelectorAll('.slide');
+        
       }
       
     })

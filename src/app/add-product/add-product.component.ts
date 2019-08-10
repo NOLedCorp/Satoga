@@ -65,6 +65,7 @@ export class AddProductComponent extends AddService implements OnInit {
               let res = Object.assign({Id:x},this.v);
               res['Photo'] = event.body;
               this.items.unshift(res);
+              this.ms.close();
             }
             
           })

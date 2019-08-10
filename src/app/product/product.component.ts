@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.ls.showLoad = true;
     this.ss.getGood(this.route.snapshot.paramMap.get("id")).subscribe(good => {
+      console.log(good)
       this.product = good;
       this.product.Photoes.unshift({Id:0, Path: this.product.Photo});
       this.current = 0;

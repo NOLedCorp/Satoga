@@ -40,7 +40,6 @@ export class AddPhotoComponent extends AddService implements OnInit {
     if(this.addForm.invalid){
       return;
     }
-    console.log(this.v);
     if(!this.item){
       this.ls.showLoad = true;
       this.ls.load = 0;

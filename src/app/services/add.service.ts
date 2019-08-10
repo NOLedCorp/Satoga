@@ -23,6 +23,13 @@ export class    AddService{
         }
         
     }
+
+    saveChanges(){
+        
+        this.addForm.valueChanges.subscribe(x => {
+            sessionStorage.setItem('currentForm', x);
+        })
+    }
     setFile(e){
         let n = {};
         n[e.target.id]=e.target.value;
