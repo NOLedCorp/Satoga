@@ -14,7 +14,8 @@
         <img src="{{i.Photo}}" alt="">
         <div>
           <p class="m-0">от {{i.MinPrice}} руб.</p>
-          <div class="btn btn-dark" routerLink="/section/{{i.Id}}">Просмотреть раздел</div>
+          <div class="btn btn-dark" routerLink="/section/{{i.Id}}" *ngIf="!us.user">Просмотреть раздел</div>
+          <div class="btn btn-dark" *ngIf="us.user" (click)="ms.open('upd-section', i)">Изменить</div>
         </div>
         
       </div>

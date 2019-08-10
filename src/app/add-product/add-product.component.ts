@@ -28,7 +28,7 @@ export class AddProductComponent extends AddService implements OnInit {
       Description: ['', Validators.required],
       SectionId: ['', Validators.required],
       FullDescription: [''],
-      Photo: [''],
+      Photo: ['', [Validators.required, Validators.pattern(this.ipattern)]],
       InStock: [''],
       Price: ['', Validators.required],
       Main: [''],
@@ -75,13 +75,11 @@ export class AddProductComponent extends AddService implements OnInit {
       let k = keys.length;
       if(Object.keys(this.update).length>0){
         this.update['Id']=this.item.Id;
-        console.log(this.update);
         this.as.updateItem(this.update, UploadTypes.Product).subscribe(x => {
           if(k==0){
             this.ls.showLoad = false;
             this.submitted = false;
             this.item = Object.assign(this.item, this.update);
-            console.log(this.update);
             this.update = {};
           }
         })

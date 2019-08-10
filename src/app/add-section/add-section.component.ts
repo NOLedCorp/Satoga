@@ -23,14 +23,17 @@ export class AddSectionComponent extends AddService implements OnInit {
     this.addForm = this.fb.group({
       Name: ['', Validators.required],
       Description: ['', Validators.required],
-      Photo: ['']
+      Photo: ['', [Validators.required, Validators.pattern(this.ipattern)]]
     });
+
+    if(this.item){
+      this.addForm.patchValue(this.item);
+    }
     
   }
   send(){
     
     this.submitted = true;
-    console.log(this.addForm);
     if(this.addForm.invalid){
       return;
     }
@@ -56,6 +59,42 @@ export class AddSectionComponent extends AddService implements OnInit {
             }
             
           })
+        })
+      })
+    }else{
+      let keys = Object.keys(this.files).filter(file => !!this.files[file]);
+      let k = keys.length;
+      if(Object.keys(this.update).length>0){
+        this.update['Id']=this.item.Id;
+        this.as.updateItem(this.update, UploadTypes.Section).subscribe(x => {
+          if(k==0){
+            this.ls.showLoad = false;
+            this.submitted = false;
+            this.item = Object.assign(this.item, this.update);
+            this.update = {};
+          }
+        })
+      }
+      keys.forEach(f => {
+        let formData = new FormData();
+        formData.append('Data', this.files[f]);
+        this.as.UploadFile(this.item.Id, UploadTypes.Section, formData, f).subscribe(event=>{
+          if(event.type == HttpEventType.UploadProgress){
+            this.ls.load = Math.round(event.loaded/event.total * 100);
+            
+          }
+          else if(event.type == HttpEventType.Response){
+            k--;
+            if(k==0 && Object.keys(this.update).length==0){
+              this.item.Photo = event.body[0];
+              this.ls.showLoad = false;
+              this.submitted = false;
+              this.files = {};
+            }
+            
+            
+          }
+          
         })
       })
     }
