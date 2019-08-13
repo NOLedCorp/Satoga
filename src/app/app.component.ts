@@ -9,6 +9,7 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent {
   title = 'Satoga';
+  showSearch = false;
   @HostListener('document:keydown.control.m') doSth(){
     this.router.navigate(['/sign-in']);
   }
@@ -17,6 +18,15 @@ export class AppComponent {
   }
 
   search(str){
+    this.showSearch = false;
     this.router.navigate(['search',str]);
+  }
+
+  show(){
+    this.showSearch = !this.showSearch;
+  }
+
+  close(e){
+    this.showSearch = false;
   }
 }

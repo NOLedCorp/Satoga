@@ -19,11 +19,13 @@ h2{
             min-height: 430px;
             max-height: 430px;
             padding: 40px 10px;
+            transition: 0.3s;
             p, h3{
                 text-align: center;
             }
             img{
-                width: 100%;
+                transition: inherit;
+                width: 90% !important;
             }
             .btn{
                 margin-top: 20px;
@@ -40,6 +42,14 @@ h2{
                     i{
                         color: #fff;
                     }
+                }
+            }
+
+            &:hover{
+                background-color: @hover-gray;
+
+                img{
+                    width: 100% !important;
                 }
             }
         }

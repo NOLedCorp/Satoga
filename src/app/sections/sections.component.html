@@ -5,7 +5,7 @@
   </div>
     <div class="row flex-container">
       
-      <div class="item" *ngFor="let i of items">
+      <div (click)="!us.user && go('section',i.Id)" class="item" *ngFor="let i of items">
         <div>
             <h3>{{i.Name}}</h3>
             <p>{{i.Description}}</p>

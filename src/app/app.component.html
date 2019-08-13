@@ -6,22 +6,33 @@
 </div>
 <div class="container px-2" *ngIf="router.url!='/sign-in'">
     <div class="d-flex justify-content-between align-items-sm-end">
-        <div>
-            <h1 >Satoga</h1>
-            <h2>Винтовочные ложи высокого класса</h2>
+        <div class="d-flex align-items-end">
+            <div>
+                <h1 routerLink="catalog">Satoga</h1>
+                <h2>Винтовочные ложи высокого класса</h2>
+            </div>
+            <div class="d-none d-lg-block" style="margin-left: 6vw; margin-bottom: -3px;">
+                <app-menu></app-menu>    
+            </div>
         </div>
-        <div class="search">
-            <fieldset class="d-flex">
-                <input type="text" class="form-control" #str>
-                <button class="btn" (click)="search(str.value)"><i class="fas fa-search" aria-hidden="true" ></i></button>
-                <div class="btn"><i class="fas fa-search" aria-hidden="true" ></i></div>
-            </fieldset>
+        
+        
+        <div class="d-flex flex-column align-items-end">
+            <a  class="d-none d-lg-block" style="z-index:1000; margin-bottom: 5px;" href="tel:+79162278742">+7 (916) 227-87-42</a>
+            <div class="search" [ngClass]="{'active':showSearch}" tabindex="0" (blur)="close()">
+                <fieldset class="d-flex">
+                    <input type="text" class="form-control" #str >
+                    <button class="btn" (click)="search(str.value)"><i class="fas fa-search" aria-hidden="true" ></i></button>
+                    <div class="btn" (click)="show()"><i class="fas fa-search" aria-hidden="true" ></i></div>
+                </fieldset>
+            </div>
         </div>
+        
     </div>
     
     <div class="menu">
         <app-menu></app-menu>
-        <a style="z-index:1000" href="tel:+79162278742">+7 (916) 227-87-42</a>
+        <a style="z-index:1000; margin-bottom: 5px;" href="tel:+79162278742">+7 (916) 227-87-42</a>
     </div>
     
     

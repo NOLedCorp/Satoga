@@ -69,6 +69,10 @@ export class SatogaService{
         return this.http.get<any>(this.baseUrl + 'Key=get-good&Id='+id);
     }
 
+    public getSection(id){
+        return this.http.get<any>(this.baseUrl + 'Key=get-section&Id='+id);
+    }
+
     //-------------------------Отправка заявки-----------------------------
 
     public addApp(app){

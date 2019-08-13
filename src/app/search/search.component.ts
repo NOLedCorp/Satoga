@@ -28,9 +28,5 @@ export class SearchComponent implements OnInit {
     
   }
 
-  initMainData(str){
-    return 
-  }
-
 
 }

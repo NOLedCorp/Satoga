@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SatogaService } from '../services/satoga.service';
 
 @Component({
   selector: 'app-section',
@@ -84,13 +85,17 @@ export class SectionComponent implements OnInit {
       }
     ]
   }
-  constructor(private route:ActivatedRoute) { 
+  constructor(private route:ActivatedRoute, private ss:SatogaService) { 
 
   }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get("id");
-    console.log(id);
+    this.route.params.subscribe(params => {
+      this.ss.getSection(params['id']).subscribe(x => {
+        this.section = x;
+        console.log(x);
+      })
+    })
   }
 
 }
