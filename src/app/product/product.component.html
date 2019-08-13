@@ -1,8 +1,8 @@
 <div *ngIf="product" class="container p-0">
-  <img src="{{product.Photoes[current].Path}}" alt="">
+  <img src="{{product.Photoes[current].Photo}}" alt="">
   <div class="photoes">
     <div class="item"  *ngFor="let i of product.Photoes; let idx = index" (click)="show(idx)">
-        <img src="{{i.Path}}" >
+        <img src="{{i.Photo}}" >
         <div class="eye" [ngClass]="{'active':idx==current}"><i class="far fa-eye"></i></div>
     </div>
     
