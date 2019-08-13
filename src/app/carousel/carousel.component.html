@@ -1,4 +1,5 @@
-<div class="carousel" *ngIf="items.length>0">
+<!-- <div class="carousel swipe" #carousel (touchstart)="start($event)" (touchmove)="swipe($event)"> -->
+<div class="carousel swipe" #carousel >
   <div class="carousel-header">
     <div class="slide" [ngClass]="{'active':idx==0}" *ngFor="let i of items; let idx = index;">
         <h2>{{i.Name}}</h2>
