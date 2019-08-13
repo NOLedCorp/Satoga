@@ -52,13 +52,19 @@
             max-width: 300px;
             padding-right: 40px;
         }
-        button{
+        button, div.btn{
             position: absolute;
             right: 0;
             top: 0;
             height: 100%;
             padding: 0;
             width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div.btn{
+            display: none;
         }
     }
     .menu{
@@ -104,15 +110,23 @@
                     width: 230px !important;
                     padding-right: 40px !important;
                     padding-left: 10px !important;
+                    color: black;
+                }
+                div.btn{
+                    display: none;
+                }
+                button.btn{
+                    display: block;
                 }
             }
         input{
             transition: 0.3s;
             width: 40px !important;
             padding: 0 !important;
-            
+            color: #fff;
             
         }
+        
     }
 }
 
