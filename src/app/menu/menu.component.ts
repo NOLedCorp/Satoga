@@ -28,4 +28,13 @@ export class MenuComponent implements OnInit {
     this.show = !this.show;
   }
 
+  showCatalog(){
+    let catalog = document.getElementsByClassName('sections')[0];
+    catalog.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+    });
+  }
+
 }

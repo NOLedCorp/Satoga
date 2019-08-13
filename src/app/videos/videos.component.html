@@ -2,9 +2,12 @@
     <div class="d-flex">
             <h3 class="header d-flex align-items-center">Видео <div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('video', videos)">Добавить</div></h3>
     </div> 
-    <div class="item" *ngFor="let v of videos">
+    <div class="d-flex flex-wrap">
+        <div class="item" *ngFor="let v of videos">
             <iframe  width="100%" style="height: 50vh" [src]="snt.bypassSecurityTrustResourceUrl(v.Path)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('upd-video', v)">Изменить</div>
     </div>
+    </div>
+    
     
 </div>

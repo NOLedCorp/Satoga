@@ -6,7 +6,7 @@
   </div>
   <div class="menu">
   
-    <div class="item" routerLink="catalog" routerLinkActive="active">Каталог</div>
+    <div class="item" routerLink="catalog" (click)="router.url=='/catalog' && showCatalog()" routerLinkActive="active">Каталог</div>
     <div class="item" routerLink="articles" routerLinkActive="active">Статьи</div>
     <div class="item" routerLink="gallery" routerLinkActive="active">Галерея</div>
     <div class="item" routerLink="videos" routerLinkActive="active">Видео</div>

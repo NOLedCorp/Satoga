@@ -6,6 +6,25 @@
         position: absolute;
         top:5px;
         z-index: 30;
+        //border: 1px solid @green;
+
+        p{
+            font-size: 17px;
+            padding: 0 3px;
+            position: relative;
+            // text-transform: uppercase;
+            background-color: rgb(69, 175, 69);
+            line-height: 25px;
+            left: -500px;
+            color: #fff;
+            animation: slide 0.7s forwards;
+        }
+
+        .btn{
+            animation: slide 1s forwards;
+            position: relative;
+            background-color: @trans-green;
+        }
     }
 }
 
@@ -43,5 +62,15 @@
 @media (max-width: 1200px){
     .label{
         left: 0 !important;
+    }
+}
+
+
+@keyframes slide{
+    from{
+        left: -300px;
+    }
+    to{
+        left: 0;
     }
 }

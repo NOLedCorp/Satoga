@@ -76,7 +76,9 @@ export class SatogaService{
     //-------------------------Отправка заявки-----------------------------
 
     public addApp(app){
-        return this.http.post<any>(this.baseUrl + 'Key=add-app', app);
+        return this.http.post<any>(this.baseUrl + 'Key=add-app', app).pipe(
+            tap(res => {console.log(res)})
+        );
     }
 
     

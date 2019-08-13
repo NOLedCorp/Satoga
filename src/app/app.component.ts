@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -14,7 +14,12 @@ export class AppComponent {
     this.router.navigate(['/sign-in']);
   }
   constructor(public router:Router, public us:UserService){
-    
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0);
+     });
   }
 
   search(str){

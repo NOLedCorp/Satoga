@@ -13,6 +13,7 @@ export class FormComponent implements OnInit {
   @Input() item:any = null;
   userForm:FormGroup;
   submitted = false;
+  showAlert = false;
   constructor(private fb:FormBuilder,  private ms:ModalService, private ls:LoadService, private ss:SatogaService) { }
 
   ngOnInit() {
@@ -32,15 +33,16 @@ export class FormComponent implements OnInit {
 
     //то, что отправляется на сервер
     let app = {
-      App: {
         Name:this.userForm.value.Name,
         Description:this.userForm.value.Description,
         Email:this.userForm.value.Email
-      }
     }
 
     this.ls.showLoad = true;
     this.ss.addApp(app).subscribe(x => {
+      if(x){
+        this.showAlert = true;
+      }
       this.ls.showLoad = false;
     })
 

@@ -3,8 +3,9 @@
     display: flex;
     .item{
         margin-right: 60px;
-        color: @gray;
+        color: rgba(0, 0, 0, 0.623);
         position: relative;
+        font-weight: 500;
         cursor: pointer;
         
 
@@ -17,11 +18,11 @@
             position: absolute;
             bottom: -1px;
             height: 1px;
-            background-color: @dark-gray;
+            background-color: black;
         }
 
         &.active, &:hover{
-            color: @dark-gray;
+            color: black;
             &:after{
                 width: 100%;
                 max-width: 1000px;

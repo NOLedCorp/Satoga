@@ -1,5 +1,5 @@
-<div class="container px-2">
-  <h3 class="d-flex align-items-center"><div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('product', items)">Добавить</div></h3>
+<div class="container px-2 bg-white" >
+  <h3 class="d-flex align-items-center">Изделия<div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('product', items)">Добавить</div></h3>
   <div *ngIf="items.length>0" class="sort">
     <div>
       <span (click)="changeSort()">Сортировать по цене<i class="fas {{getSort()}}"></i></span>

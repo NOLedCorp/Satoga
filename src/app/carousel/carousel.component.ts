@@ -103,22 +103,22 @@ export class CarouselComponent implements OnInit {
     
     
     
-    // this.ls.showLoad = true;
-    // this.ss.getMain().subscribe(x => {
-    //   if(x){
-    //     this.items = x;
-    //     this.ls.showLoad = false;
+    this.ls.showLoad = true;
+    this.ss.getMain().subscribe(x => {
+      if(x){
+        this.items = x;
+        this.ls.showLoad = false;
         
-    //     setTimeout(()=> {
-    //       this.slides = document.querySelector('.carousel-body').querySelectorAll('.slide');
-    //       this.headers = document.querySelector('.carousel-header').querySelectorAll('.slide');
-    //     }, 100)
-    //   }else{
-    //     this.ls.showLoad = false;
+        setTimeout(()=> {
+          this.slides = document.querySelector('.carousel-body').querySelectorAll('.slide');
+          this.headers = document.querySelector('.carousel-header').querySelectorAll('.slide');
+        }, 100)
+      }else{
+        this.ls.showLoad = false;
         
-    //   }
+      }
       
-    // })
+    })
   }
 
   swipe(e?){

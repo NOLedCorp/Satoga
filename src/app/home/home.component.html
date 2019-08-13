@@ -1,8 +1,8 @@
 <div class="container px-2">
     <div class="head">
         <div class="label">
-            <p>Винтовочные ложи в наличии и на заказ</p>
-            <div class="btn btn-lt btn-lt-success" (click)="ms.open('form')"><span>Оставить заявку</span></div>
+            <p >Винтовочные ложи в наличии и на заказ</p>
+            <div class="btn btn-lt btn-lt-success text-white" (click)="ms.open('form')"><span>Оставить заявку</span></div>
         </div>
         <div class="carousel">
             <stg-carousel></stg-carousel>
@@ -11,9 +11,9 @@
     
     
 </div>
-<!-- <sections></sections> -->
+<sections></sections>
 
 
-<div class="catalog" *ngIf="items.length>0  || us.user">
+<div class="catalog bg-white" *ngIf="items.length>0  || us.user">
     <catalog [items]="items"></catalog>
 </div>

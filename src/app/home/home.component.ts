@@ -93,13 +93,13 @@ export class HomeComponent implements OnInit {
   constructor(private ss:SatogaService, public ms:ModalService, private ls:LoadService, public us:UserService, private as:AdminService) { }
 
   ngOnInit() {
-    // this.ls.showLoad = true;
-    // this.ss.getGoods().subscribe(items => {
-    //   if(items && items.length>0){
-    //     this.items = items;
-    //   }
-    //   this.ls.showLoad=false;
-    // })
+    this.ls.showLoad = true;
+    this.ss.getGoods().subscribe(items => {
+      if(items && items.length>0){
+        this.items = items;
+      }
+      this.ls.showLoad=false;
+    })
   }
 
   showCatalog(){
