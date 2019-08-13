@@ -15,4 +15,8 @@ export class AppComponent {
   constructor(public router:Router, public us:UserService){
     
   }
+
+  search(str){
+    this.router.navigate(['search',str]);
+  }
 }

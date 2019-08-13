@@ -8,6 +8,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { SectionComponent } from './section/section.component';
 import { ProductComponent } from './product/product.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'catalog', pathMatch: 'full'},
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'contacts', component: ContactsComponent},
   { path: 'sign-in', component: SignInComponent},
   { path: 'section/:id', component: SectionComponent},
-  { path: 'product/:id', component: ProductComponent}
+  { path: 'product/:id', component: ProductComponent},
+  { path: 'search/:str', component: SearchComponent}
   
 ];
 

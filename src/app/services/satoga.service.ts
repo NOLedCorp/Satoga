@@ -28,6 +28,17 @@ export class SatogaService{
         );
     }
 
+    public searchGoods(search){
+        return this.http.get<any>(this.baseUrl + 'Key=search-goods&Search='+search).pipe(
+            tap(goods => {
+                goods.forEach(element => {
+                   element.Main = Number(element.Main); 
+                   element.InStock = Number(element.InStock);
+                });
+            })
+        );
+    }
+
     public getMain(){
         return this.http.get<any>(this.baseUrl + 'Key=get-main');
     }

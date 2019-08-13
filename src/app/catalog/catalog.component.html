@@ -7,7 +7,10 @@
   </div>
   <div class="flex-container">
     <div class="item" *ngFor="let i of items">
-      <img src="{{i.Photo}}" alt="{{i.Name}}">
+      <div class="img">
+        <img src="{{i.Photo}}" alt="{{i.Name}}">
+      </div>
+      
       <h3 routerLink="/product/{{i.Id}}">{{i.Name}}</h3>
       <span class="px-1 text-white" [ngClass]="{'bg-success':!!i.InStock, 'bg-danger':!i.InStock}">{{!!i.InStock?'В наличии':'На заказ'}}</span>
       <p>{{i.Description}}</p>

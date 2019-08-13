@@ -3,7 +3,7 @@
     <div class="slide" [ngClass]="{'active':idx==0}" *ngFor="let i of items; let idx = index;">
         <h2>{{i.Name}}</h2>
         <p>{{i.Description}}</p>
-        <div class="btn btn-lt btn-lt-success"><span>Подробнее</span></div>
+        <div class="btn btn-lt btn-lt-success" routerLink="/product/{{i.Id}}"><span>Подробнее</span></div>
     </div>
     <div class="controls">
       <div class="prev" (click)="prev()">

@@ -1,4 +1,4 @@
-<div class="sections" style="margin-top: 100px;"  *ngIf="items.length>0 || us.user">
+<div class="sections"   *ngIf="items.length || us.user">
   <!-- <h2 class="d-flex justify-content-center">Разделы</h2> -->
   <div>
     <div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('section', items)">Добавить</div>

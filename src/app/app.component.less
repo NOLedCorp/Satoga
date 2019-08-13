@@ -27,6 +27,7 @@
     padding-bottom: 0;
     &>.d-flex{
         margin-bottom: 40px;
+        position: relative;
     }
     h1,h2{
         font-family: Tahoma, Arial, sans-serif;
@@ -82,11 +83,36 @@
 }
 
 @media (max-width:768px){
-    h2{
-        margin-bottom: 20 !important;
+    h1{
         z-index: 1000;
         margin-top: -38px !important;
         position: relative;
+    }
+    h2{
+        z-index: 1000;
+        position: relative;
+    }
+    .search{
+        z-index: 1000;
+        margin-top: -38px !important;
+        position: absolute;
+        right: 10px;
+        top:4px;
+        &:focus-within,
+            &:focus{
+                input{
+                    width: 230px !important;
+                    padding-right: 40px !important;
+                    padding-left: 10px !important;
+                }
+            }
+        input{
+            transition: 0.3s;
+            width: 40px !important;
+            padding: 0 !important;
+            
+            
+        }
     }
 }
 

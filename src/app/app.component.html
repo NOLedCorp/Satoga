@@ -5,15 +5,15 @@
     <div class="btn btn-link" (click)="us.exit()">Выйти</div>
 </div>
 <div class="container px-2" *ngIf="router.url!='/sign-in'">
-    <div class="d-flex justify-content-between align-items-end">
+    <div class="d-flex justify-content-between align-items-sm-end">
         <div>
             <h1 >Satoga</h1>
             <h2>Винтовочные ложи высокого класса</h2>
         </div>
         <div class="search">
             <fieldset class="d-flex">
-                <input type="text" class="form-control" placeholder="Поиск по каталогу">
-                <button class="btn"><i class="fas fa-search" aria-hidden="true"></i></button>
+                <input type="text" class="form-control" #str>
+                <button class="btn" (click)="search(str.value)"><i class="fas fa-search" aria-hidden="true" ></i></button>
             </fieldset>
         </div>
     </div>

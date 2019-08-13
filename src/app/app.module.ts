@@ -43,6 +43,7 @@ import { AddPhotoComponent } from './add-photo/add-photo.component';
 import { ApiInterceptor } from './api.interceptor';
 import { DocumentComponent } from './document/document.component';
 import { ProgSelectComponent } from './prog-select/prog-select.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { ProgSelectComponent } from './prog-select/prog-select.component';
     AddVideoComponent,
     AddPhotoComponent,
     DocumentComponent,
-    ProgSelectComponent
+    ProgSelectComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
