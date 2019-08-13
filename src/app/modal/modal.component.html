@@ -1,6 +1,7 @@
 <ng-template class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
 
   <div class="p-3">
+      <i class="fas fa-times" (click)="ms.close()"></i>
     <app-form *ngIf="ms.type=='form'" [item]="ms.inpt"></app-form>
     <add-section *ngIf="ms.type=='section'" [items]="ms.inpt"></add-section>
     <add-product *ngIf="ms.type=='product'" [items]="ms.inpt"></add-product>
