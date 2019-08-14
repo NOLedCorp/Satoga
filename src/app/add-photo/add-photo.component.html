@@ -18,6 +18,11 @@
       <input class="d-none" id='Photo' type="file" (change)="setFile($event)" #Photo>
       <small  class="form-text text-danger" *ngIf="submitted && f.Photo.errors && f.Photo.errors.pattern">Файл с расширением .png или .jpg</small>
   </div>
+  <div class="photoes flex-container">
+    <div class="photo" *ngFor="let p of photoes">
+      <document [type]="'img'" [href]="p.Photo"></document>
+    </div>
+  </div>
   
   
   

@@ -1,10 +1,52 @@
 .cont{
     display: flex;
+    position: relative;
     *{
         margin-right: 10px;
     }
+    
 
     &.img{
+        &:hover{
+            .checker{
+                opacity: 1;
+            }
+        }
+
+        .checker{
+            opacity: 0;
+            transition: 0.3s;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.336);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &.checked{
+                opacity: 1 !important;
+            }
+            .check-box{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                padding: 5px;
+                border-radius: 5px;
+                height: 35px;
+                width: 35px;
+                background-color: #fff;
+                cursor: pointer;
+                i{
+                    color: black;
+                    position: absolute;
+                    font-size: 25px;
+                }
+            }
+            
+        }
         img{
             width: 200px;
         }

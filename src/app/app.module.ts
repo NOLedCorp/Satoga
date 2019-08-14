@@ -44,6 +44,7 @@ import { ApiInterceptor } from './api.interceptor';
 import { DocumentComponent } from './document/document.component';
 import { ProgSelectComponent } from './prog-select/prog-select.component';
 import { SearchComponent } from './search/search.component';
+import { AlertDirective } from './directives/alert.directive';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { SearchComponent } from './search/search.component';
     AddPhotoComponent,
     DocumentComponent,
     ProgSelectComponent,
-    SearchComponent
+    SearchComponent,
+    AlertDirective
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'document',
@@ -9,6 +9,11 @@ export class DocumentComponent implements OnInit {
   @Input() type:string;
   @Input() href:string;
   @Input() text:string;
+  @Input() editable:boolean = false;
+
+  @Output() onChange = new EventEmitter<boolean>();
+
+  checked = false;
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +23,11 @@ export class DocumentComponent implements OnInit {
     if(v){
         return v.split('__')[1];
     }
+  }
+
+  change(){
+    this.checked = !this.checked;
+    this.onChange.emit(this.checked);
   }
 
 }
