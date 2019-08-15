@@ -11,30 +11,10 @@ import { ModalService } from '../services/modal.service';
 })
 export class GalleryComponent implements OnInit {
   photoes:any = [
-    {
-      Name:'Ложа для СКС | C-205 P',
-      Photo: '../../assets/images/lozha.png'
-    },
-    {
-      Name:'Ложа для СКС | C-205 P',
-      Photo: '../../assets/images/lozha.png'
-    },
-    {
-      Name:'Ложа для СКС | C-205 P',
-      Photo: '../../assets/images/lozha.png'
-    },
-    {
-      Name:'Ложа для СКС | C-205 P',
-      Photo: '../../assets/images/lozha.png'
-    },
-    {
-      Name:'Ложа для СКС | C-205 P',
-      Photo: '../../assets/images/lozha.png'
-    }
-
   ];
 
   show = false;
+  current = 0;
   constructor(private ss:SatogaService, private ls:LoadService, public us:UserService, public ms:ModalService) { }
 
   ngOnInit() {
@@ -57,8 +37,16 @@ export class GalleryComponent implements OnInit {
     
   }
 
-  close(){
-    this.show = ! this.show;
+  close(i:number=-1){
+    
+    if(i>-1){
+      this.show = true;
+      this.current = i;
+    }else{
+      this.show = false;
+    }
+    let html = document.getElementsByTagName('html')[0];
+    html.style.overflow = this.show?'hidden':'unset';
   }
 
 }

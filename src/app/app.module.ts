@@ -45,6 +45,7 @@ import { DocumentComponent } from './document/document.component';
 import { ProgSelectComponent } from './prog-select/prog-select.component';
 import { SearchComponent } from './search/search.component';
 import { AlertDirective } from './directives/alert.directive';
+import { BricksComponent } from './bricks/bricks.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { AlertDirective } from './directives/alert.directive';
     DocumentComponent,
     ProgSelectComponent,
     SearchComponent,
-    AlertDirective
+    AlertDirective,
+    BricksComponent
   ],
   imports: [
     BrowserModule,

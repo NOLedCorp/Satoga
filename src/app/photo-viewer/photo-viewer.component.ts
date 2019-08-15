@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterContentInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'photo-viewer',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PhotoViewerComponent implements OnInit {
   @Input() items:PhotoView[] = [];
+  @Input() current:number = 0;
   @Output() onClose = new EventEmitter<boolean>();
   
   constructor() { }
@@ -17,6 +18,7 @@ export class PhotoViewerComponent implements OnInit {
   closeViewer(){
     this.onClose.emit(true);
   }
+
 
 
   
