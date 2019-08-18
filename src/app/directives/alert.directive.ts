@@ -24,7 +24,8 @@ export class AlertDirective implements OnInit{
             'background-color':'white',
             'display':'none',
             'max-width':'200px',
-            'color':'black'
+            'color':'black',
+            'z-index':'10'
         }
         this.setStyles(alert, styles);
         alert.innerText=this.message;

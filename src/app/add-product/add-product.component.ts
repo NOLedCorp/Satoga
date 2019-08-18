@@ -7,6 +7,7 @@ import { Validators } from '@angular/forms';
 import { UploadTypes } from '../services/models';
 import { HttpEventType } from '@angular/common/http';
 import { SatogaService } from '../services/satoga.service';
+import { isBoolean } from 'util';
 
 @Component({
   selector: 'add-product',
@@ -41,12 +42,13 @@ export class AddProductComponent extends AddService implements OnInit {
     
   }
   setGalleryItem(e, item){
-    if(e instanceof Boolean){
+    if(isBoolean(e)){
       item['Gallery']=e;
     }else{
       item['Gallery']=e.target.checked;
     }
-    console.log(item);
+    this.updArray('changed',[]);
+    
   }
   send(){
     
@@ -121,7 +123,15 @@ export class AddProductComponent extends AddService implements OnInit {
 
 
   addPhoto(event){
-    this.manyFiles = event.target.files;
+    for(let i =0; i< event.target.files.length; i++){
+      this.manyFiles.push(event.target.files[i]);
+    }
+    this.updArray('files', this.manyFiles);
+  }
+
+  removeFile(i){
+    this.manyFiles.splice(i,1);
+    this.updArray('files', this.manyFiles);
   }
 
 }
