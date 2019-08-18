@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { TabHeadingDirective } from 'ngx-bootstrap';
 
 @Component({
@@ -9,16 +9,16 @@ import { TabHeadingDirective } from 'ngx-bootstrap';
 export class BricksComponent implements OnInit {
 
   showItems: any = [];
-  @Input() size = 3;
+  @Input() size = 4;
   @Input() items = [];
+  @Input() template:TemplateRef<any>
   constructor() { }
 
   ngOnInit() {
     for(let  i = 0; i<this.size; i++){
       this.showItems.push([]);
     }
-    this.showItems = this.cut(this.showItems, 4, this.items);
-    console.log(this.showItems)
+    this.showItems = this.cut(this.showItems, this.size, this.items);
   }
 
   cut(sub:any, s:number, array:any){

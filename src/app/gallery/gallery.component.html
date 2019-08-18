@@ -1,7 +1,7 @@
 
 <div class="container p-0">
     <h3 class="header d-flex align-items-center">Фотогалерея <div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('photo', photoes)">Добавить</div></h3>
-    <bricks *ngIf="photoes.length" [items]="photoes" [size]="4"></bricks>
+    <bricks *ngIf="photoes.length" [items]="photoes" [size]="4" [template]="photo"></bricks>
   
 </div>
 
@@ -9,3 +9,15 @@
   <photo-viewer (onClose)="close()" [current]="current" [items]="getPhotoes()"></photo-viewer>
 </div>
 
+
+<ng-template #photo let-item>
+  <div class="item">
+    
+    <div style="position: relative;" (click)="close(item.Id)">
+      <img style="width: 100%;" src="{{item.Photo}}" alt="{{item.Name}}">
+      <div class="eye"><i class="far fa-eye"></i></div>
+    </div>
+    <h3 class="mt-2">{{item.Name}}</h3>  
+    <div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('upd-photo', i)">Изменить</div>
+  </div>
+</ng-template>

@@ -37,8 +37,8 @@ export class GalleryComponent implements OnInit {
     
   }
 
-  close(i:number=-1){
-    
+  close(id=-1){
+    let i = this.photoes.findIndex(p => p.Id==id);
     if(i>-1){
       this.show = true;
       this.current = i;

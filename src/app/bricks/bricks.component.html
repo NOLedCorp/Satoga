@@ -1,14 +1,12 @@
 
 <div class="row">
   <div class="{{'col-sm-'+12/showItems.length}}" *ngFor="let it of showItems; let idx = index">
-    <div class="item" *ngFor="let i of showItems[idx]">
-      <div style="position: relative;" (click)="close(idx)">
-        <img style="width: 100%;" src="{{i.Photo}}" alt="{{i.Name}}">
-        <div class="eye"><i class="far fa-eye"></i></div>
-      </div>
-      
-      <h3 class="mt-2">{{i.Name}}</h3>
-      <!-- <div class="btn btn-new btn-dark" *ngIf="us.user" (click)="ms.open('upd-photo', i)">Изменить</div> -->
-    </div>
+    <ng-template ngFor
+             [ngForOf]="showItems[idx]"
+             [ngForTemplate]="template">
+    </ng-template>
   </div>                                                              
 </div>
+
+
+
