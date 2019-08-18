@@ -20,6 +20,10 @@ export class AdminService{
         return this.http.post<any>(this.baseUrl + 'Key=add-item&Table='+table, enter);
     }
 
+    public addProduct(enter){
+        return this.http.post<any>(this.baseUrl + 'Key=add-product', enter);
+    }
+
     public updateItem(enter, table){
         return this.http.post<any>(this.baseUrl + 'Key=update-item&Table='+table, enter);
     }
