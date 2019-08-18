@@ -42,6 +42,7 @@ export class AlertDirective implements OnInit{
         alert.append(corner);
         this.element.nativeElement.append(alert);
         this.element.nativeElement.addEventListener('mouseenter', ()=>{
+            console.log(this.element)
             alert.style.display = 'block';
         })
 

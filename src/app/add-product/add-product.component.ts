@@ -15,6 +15,7 @@ import { SatogaService } from '../services/satoga.service';
 })
 export class AddProductComponent extends AddService implements OnInit {
   sections = [];
+  manyFiles:File[] = []
   constructor(private as:AdminService, private ms:ModalService, private ss:SatogaService, private ls:LoadService) { 
     super();
   }
@@ -38,6 +39,14 @@ export class AddProductComponent extends AddService implements OnInit {
       this.addForm.patchValue(this.item);
     }
     
+  }
+  setGalleryItem(e, item){
+    if(e instanceof Boolean){
+      item['Gallery']=e;
+    }else{
+      item['Gallery']=e.target.checked;
+    }
+    console.log(item);
   }
   send(){
     
@@ -108,6 +117,11 @@ export class AddProductComponent extends AddService implements OnInit {
         })
       })
     }
+  }
+
+
+  addPhoto(event){
+    this.manyFiles = event.target.files;
   }
 
 }
