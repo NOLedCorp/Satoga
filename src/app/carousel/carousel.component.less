@@ -7,7 +7,7 @@
         z-index: 100;
         left: 60%;
         top: 0;
-        width: 50% !important;
+        width: 50%;
         overflow: hidden;
         height: 200px;
         display: flex;
@@ -139,10 +139,15 @@
         max-width: 310px;
         .slide{
             width: 100% !important;
+            max-height: 162px !important;
         }
 
         h2{
-            font-size: 30px !important;
+            min-width: 130px !important;
+            font-size: 25px !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
         }
     }
     .carousel-body{

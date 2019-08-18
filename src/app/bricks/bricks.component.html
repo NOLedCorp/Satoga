@@ -1,12 +1,20 @@
 
 <div class="row">
-  <div class="{{'col-sm-'+12/showItems.length}}" *ngFor="let it of showItems; let idx = index">
+  <div class="{{'col-sm-'+12/showItems.length}} px-0" *ngFor="let it of showItems; let idx = index">
     <ng-template ngFor
              [ngForOf]="showItems[idx]"
              [ngForTemplate]="template">
     </ng-template>
   </div>                                                              
 </div>
+<!-- 
+<div class="bricks">
+    <ng-template ngFor
+      [ngForOf]="items"
+      [ngForTemplate]="template">
+  </ng-template>
+</div> -->
+
 
 
 

@@ -11,7 +11,15 @@ export class BricksComponent implements OnInit {
   showItems: any = [];
   @Input() size = 4;
   @Input() items = [];
-  @Input() template:TemplateRef<any>
+  @Input() template:TemplateRef<any>;
+  masonryItems = [
+    { title: 'item 1' },
+    { title: 'item 2' },
+    { title: 'item 3' },
+    { title: 'item 4' },
+    { title: 'item 5' },
+    { title: 'item 6' }
+  ];
   constructor() { }
 
   ngOnInit() {

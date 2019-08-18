@@ -129,13 +129,13 @@ export class CatalogComponent implements OnInit {
       }
       case SortTypes.Increese: {
         this.items = this.items.sort((a, b) => {
-          return a.Price>b.Price?1:-1;
+          return Number(a.Price)>Number(b.Price)?1:-1;
         })
         break;
       }
       case SortTypes.Decreese: {
         this.items = this.items.sort((a, b) => {
-          return a.Price<b.Price?1:-1;
+          return Number(a.Price)<Number(b.Price)?1:-1;
         })
         break;
       }
