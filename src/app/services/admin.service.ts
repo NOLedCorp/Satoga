@@ -20,8 +20,16 @@ export class AdminService{
         return this.http.post<any>(this.baseUrl + 'Key=add-item&Table='+table, enter);
     }
 
+    public removeItems(enter, table){
+        return this.http.post<any>(this.baseUrl + 'Key=remove-items&Table='+table, enter);
+    }
+
     public addProduct(enter){
         return this.http.post<any>(this.baseUrl + 'Key=add-product', enter);
+    }
+
+    public addPhotoes(enter){
+        return this.http.post<any>(this.baseUrl + 'Key=add-photoes', enter);
     }
 
     public updateItem(enter, table){

@@ -2,9 +2,11 @@
   <img src="{{href}}">
   <div class="checker" [ngClass]="{'checked':checked}">
     <span class="check-box" (click)="change()" alert [message]="'Отобразить в галерее'"><i *ngIf="checked" class="fas fa-check"></i></span>
+    <div class="fas fa-times" (click)="delete()"></div>
   </div>
 </div>
 <div *ngIf="type!='img'" class="cont">
   <img src="../../assets/images/pdf.png" >
   <a href="{{href}}">{{getValue(href)}}</a>
+  <div class="fas fa-times" (click)="delete()"></div>
 </div>

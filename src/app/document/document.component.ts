@@ -12,6 +12,7 @@ export class DocumentComponent implements OnInit {
   @Input() editable:boolean = false;
 
   @Output() onChange = new EventEmitter<boolean>();
+  @Output() onDelete = new EventEmitter<boolean>();
 
   checked = false;
   constructor() { }
@@ -28,6 +29,10 @@ export class DocumentComponent implements OnInit {
   change(){
     this.checked = !this.checked;
     this.onChange.emit(this.checked);
+  }
+
+  delete(){
+    this.onDelete.emit(true);
   }
 
 }

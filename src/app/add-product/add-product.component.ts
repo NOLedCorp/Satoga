@@ -43,13 +43,23 @@ export class AddProductComponent extends AddService implements OnInit {
     }
     
   }
+
+  /**
+   * Устанавливает флажок добавления в галерею
+   * @param e событие
+   * @param item элемент
+   */
   setGalleryItem(e, item){
     if(isBoolean(e)){
       item['Gallery']=e;
+      if(!this.update['changed']){
+        this.updArray('changed', []);
+      }
+      this.update['changed'].push(item);
     }else{
       item['Gallery']=e.target.checked;
     }
-    this.updArray('changed',[]);
+
     
   }
   send(){
@@ -59,6 +69,14 @@ export class AddProductComponent extends AddService implements OnInit {
       return;
     }
     this.ls.showLoad = true;
+    if(this.item){
+      this.doUpdate();
+    }else{
+      this.add();
+    }
+  }
+
+  add(){
     //добавляем дополнительные фотографии в объект продукта
     let product = this.v;
     product.Photoes = this.manyFiles.map(x => {
@@ -93,6 +111,46 @@ export class AddProductComponent extends AddService implements OnInit {
     })
   }
 
+  doUpdate(){
+    let remove = JSON.parse(JSON.stringify(this.update['removeFiles']));
+    let upload = JSON.parse(JSON.stringify(this.update['files']));
+    let changed = JSON.parse(JSON.stringify(this.update['changed']));
+
+    delete this.update['removeFiles'];
+    delete this.update['files'];
+    delete this.update['changed'];
+
+    let subs = [];
+
+    subs.push(
+      ...[
+        this.as.addPhotoes(upload.map(x => {
+          return {Name:this.v.Name, GoodId:this.item.Id, Photo:'', Gallery:x.Gallery}
+        })),
+        this.as.removeItems(remove, UploadTypes.Photo),
+        this.as.updateItem(this.update, UploadTypes.Product)
+      ],
+      ...changed.map(x => {
+        return this.as.updateItem(x, UploadTypes.Photo)
+      })
+    );
+
+    forkJoin(subs).subscribe(result => {
+      let fileSubs = [];
+      for(let i = 0; i<result[0].length-1; i++){
+        const formData = new FormData();
+        formData.append('Data', this.manyFiles[i]);
+        fileSubs.push(this.as.UploadFile(result[0][i], UploadTypes.Photo, formData));
+      }
+
+      forkJoin(subs).subscribe(
+        success => {
+          this.ls.showLoad = false;
+        }
+      )
+    })
+  }
+
 
   addPhoto(event){
     for(let i =0; i< event.target.files.length; i++){
@@ -101,9 +159,21 @@ export class AddProductComponent extends AddService implements OnInit {
     this.updArray('files', this.manyFiles);
   }
 
-  removeFile(i){
-    this.manyFiles.splice(i,1);
-    this.updArray('files', this.manyFiles);
+  removeFile(i, files = this.manyFiles){
+    
+    let file = Object.assign({},files.slice(i,i+1)[0]);
+    files.splice(i,1);
+    console.log(file);
+    if(file.Photo){
+      if(!this.update['removeFiles']){
+        this.updArray('removeFiles', []);
+      }
+      this.update['removeFiles'].push(file);
+    }else{
+      this.updArray('files', files)
+    }
+    
+    
   }
 
 }

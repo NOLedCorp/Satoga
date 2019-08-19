@@ -20,6 +20,7 @@ export class SatogaService{
     public getGoods(){
         return this.http.get<any>(this.baseUrl + 'Key=get-goods').pipe(
             tap(goods => {
+                console.log(goods)
                 goods.forEach(element => {
                    element.Main = Number(element.Main); 
                    element.InStock = Number(element.InStock);

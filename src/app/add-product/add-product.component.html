@@ -42,7 +42,7 @@
       </div>
     <div class="form-group d-flex flex-column align-items-start">
         <label for="exampleInputEmail1" [ngClass]="{'text-danger':(submitted && f.Photo.errors)}">Фотография</label>
-        <document *ngIf="!files['Photo'] && item && item.Photo" [type]="'img'" [href]="item.Photo" (onChange)="setGalleryItem($event, item)"></document>
+        <document *ngIf="!files['Photo'] && item && item.Photo" [type]="'img'" [href]="item.Photo"></document>
         <span>{{v.Photo==''?'':getValue(v.Photo)}}<button class="btn btn-link" (click)="Photo.click()">{{!item && v.Photo=='' || item && item.Photo==''?'Загрузить':'Изменить'}} фотографию</button></span>
         <input class="d-none" id='Photo' type="file" (change)="setFile($event)" #Photo>
         <small  class="form-text text-danger" *ngIf="submitted && f.Photo.errors && f.Photo.errors.pattern">Файл с расширением .png или .jpg</small>
@@ -52,6 +52,11 @@
             <!-- <button class="btn btn-link" (click)="photoes.click()">{{!item && !manyFiles.length || item && !item.Photoes.length?'Загрузить':'Изменить'}} фотографии</button> -->
             <button class="btn btn-link" (click)="photoes.click()">{{manyFiles.length?'Добавить фотографии':'Загрузить фотографии'}}</button>
             <input class="d-none" id='Photos' type="file" multiple (change)="addPhoto($event)" #photoes>
+            <div class="photoes" *ngIf="item">
+              <div class="photo" *ngFor="let p of item.Photoes; let i = index">
+                <document *ngIf="p.Photo" [type]="'img'" [href]="p.Photo" (onChange)="setGalleryItem($event, p)" (onDelete)="removeFile(i, item.Photoes)"></document>
+              </div>
+            </div>
             <div class="files">
                 <div class="file" *ngFor="let f of manyFiles; let i = index">
                     <i class="far fa-image"></i>
@@ -60,6 +65,7 @@
                     <i class="ml-2 fas fa-times" aria-hidden="true" (click)="removeFile(i)"></i>
                 </div>
             </div>
+            
     </div>
     
     
