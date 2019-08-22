@@ -68,8 +68,13 @@ export class AddProductComponent extends AddService implements OnInit {
     if(this.addForm.invalid){
       return;
     }
+    
     this.ls.showLoad = true;
     if(this.item){
+      if(Object.keys(this.update).length){
+        this.update['Id']=this.item.Id;
+      }
+      
       this.doUpdate();
     }else{
       this.add();
@@ -112,38 +117,49 @@ export class AddProductComponent extends AddService implements OnInit {
   }
 
   doUpdate(){
-    let remove = JSON.parse(JSON.stringify(this.update['removeFiles']));
-    let upload = JSON.parse(JSON.stringify(this.update['files']));
-    let changed = JSON.parse(JSON.stringify(this.update['changed']));
+    let remove = this.update['removeFiles']?JSON.parse(JSON.stringify(this.update['removeFiles'])):[];
+    let changed = this.update['changed']?JSON.parse(JSON.stringify(this.update['changed'])):[];
 
     delete this.update['removeFiles'];
     delete this.update['files'];
     delete this.update['changed'];
-
     let subs = [];
-
+    
     subs.push(
       ...[
-        this.as.addPhotoes(upload.map(x => {
+        this.as.addPhotoes(this.manyFiles.map(x => {
           return {Name:this.v.Name, GoodId:this.item.Id, Photo:'', Gallery:x.Gallery}
         })),
-        this.as.removeItems(remove, UploadTypes.Photo),
-        this.as.updateItem(this.update, UploadTypes.Product)
+        this.as.removeItems(remove, UploadTypes.Photo)
+        
       ],
       ...changed.map(x => {
-        return this.as.updateItem(x, UploadTypes.Photo)
+        return this.as.updateItem({Id: x.Id, Name: x.Name, GoodId:x.GoodId, Photo: x.Photo, Gallery:x.Gallery?1:0}, UploadTypes.Photo)
       })
     );
+      console.log(Object.keys(this.update))
+    if(Object.keys(this.update).length>1){
+      subs.push(this.as.updateItem(this.update, UploadTypes.Product));
+    }
+    Object.keys(this.files).filter(file => !!this.files[file]).forEach(f => {
+      const formData = new FormData();
+      formData.append('Data', this.files[f]);
+      subs.push(this.as.UploadFile(this.item.Id, UploadTypes.Product, formData))
+    })
 
     forkJoin(subs).subscribe(result => {
+      console.log(result);
       let fileSubs = [];
-      for(let i = 0; i<result[0].length-1; i++){
+      if(!result[0].length){
+        this.ls.showLoad = false;
+      }
+      for(let i = 0; i<result[0].length; i++){
         const formData = new FormData();
         formData.append('Data', this.manyFiles[i]);
         fileSubs.push(this.as.UploadFile(result[0][i], UploadTypes.Photo, formData));
       }
 
-      forkJoin(subs).subscribe(
+      forkJoin(fileSubs).subscribe(
         success => {
           this.ls.showLoad = false;
         }
@@ -157,6 +173,7 @@ export class AddProductComponent extends AddService implements OnInit {
       this.manyFiles.push(event.target.files[i]);
     }
     this.updArray('files', this.manyFiles);
+    console.log(this.manyFiles);
   }
 
   removeFile(i, files = this.manyFiles){

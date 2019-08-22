@@ -10,11 +10,10 @@ export class DocumentComponent implements OnInit {
   @Input() href:string;
   @Input() text:string;
   @Input() editable:boolean = false;
+  @Input() checked:boolean = false;
 
   @Output() onChange = new EventEmitter<boolean>();
   @Output() onDelete = new EventEmitter<boolean>();
-
-  checked = false;
   constructor() { }
 
   ngOnInit() {

@@ -54,7 +54,7 @@
             <input class="d-none" id='Photos' type="file" multiple (change)="addPhoto($event)" #photoes>
             <div class="photoes" *ngIf="item">
               <div class="photo" *ngFor="let p of item.Photoes; let i = index">
-                <document *ngIf="p.Photo" [type]="'img'" [href]="p.Photo" (onChange)="setGalleryItem($event, p)" (onDelete)="removeFile(i, item.Photoes)"></document>
+                <document *ngIf="p.Photo" [type]="'img'" [href]="p.Photo" [checked]="p.Gallery" (onChange)="setGalleryItem($event, p)" (onDelete)="removeFile(i, item.Photoes)"></document>
               </div>
             </div>
             <div class="files">
