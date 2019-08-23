@@ -1,4 +1,4 @@
-<div style="position: relative; z-index: 1;">
+<div style="position: relative; z-index: 3;">
     <div class="user" *ngIf="us.user">
     
         <p class="p-0">Выполнен вход администратора</p>
@@ -49,8 +49,12 @@
     <app-load></app-load>
 </div>
 
+<div class="bkg">
+    <div class="bkg bkg-img" *ngIf="router.url=='/catalog'"></div>
+    <div class="bkg bkg-img" *ngIf="router.url=='/catalog'"></div>
+    <div class="bkg bkg-img" *ngIf="router.url=='/catalog'"></div>
+</div>
 
-<div class="bkg-img" *ngIf="router.url=='/catalog'"></div>
 
 
 
