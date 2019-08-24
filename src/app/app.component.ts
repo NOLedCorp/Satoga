@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'Satoga';
   showSearch = false;
   showMenu = false;
+  last = 0;
   @HostListener('document:keydown.control.m') doSth(){
     this.router.navigate(['/sign-in']);
   }

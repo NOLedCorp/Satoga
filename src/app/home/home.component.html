@@ -2,13 +2,13 @@
     <div class="head">
         
         <h2>Satoga</h2>
-        <h3>Винтовочные ложи высокого класса</h3>
+        <h3>Изготовление винтовочных лож</h3>
         <svg viewBox="0 0 40 25" width="40" (click)="showSections()">
             <polyline points="2,2 20,17 38,2"  stroke-linejoin="round" stroke-width="5" fill="none"/>
         </svg>
-        <!-- <div class="birds">
+        <div class="birds">
             <img src="../../assets/images/birds.png" alt="">
-        </div> -->
+        </div>
     </div>
     
     
@@ -30,7 +30,7 @@
 <div class="catalog bg-white" *ngIf="items.length>0  || us.user">
     <catalog [items]="items"></catalog>
     <div class="container px-0 d-flex justify-content-start">
-            <div class="show-catalog">
+            <div class="show-catalog" routerLink="/catalog">
                     Перейти в каталог
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 31.49 31.49" style="enable-background:new 0 0 31.49 31.49;" xml:space="preserve">

@@ -4,6 +4,7 @@ import { SatogaService } from '../services/satoga.service';
 import { LoadService } from '../services/load.service';
 import { UserService } from '../services/user.service';
 import { AdminService } from '../services/admin.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -90,7 +91,12 @@ export class HomeComponent implements OnInit {
       Price: 70000
     }
   ];
-  constructor(private ss:SatogaService, public ms:ModalService, private ls:LoadService, public us:UserService, private as:AdminService) { }
+  constructor(private ss:SatogaService, 
+    public ms:ModalService, 
+    private ls:LoadService, 
+    public us:UserService, 
+    private as:AdminService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.ls.showLoad = true;

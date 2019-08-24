@@ -4,13 +4,13 @@
         <p class="p-0">Выполнен вход администратора</p>
         <div class="btn btn-link" (click)="us.exit()">Выйти</div>
     </div>
-    <div  [ngClass]="{'light':router.url=='/catalog'}">
-        <div class="container px-2 bg-white head" [ngClass]="{'show-menu':showMenu}" *ngIf="router.url!='/sign-in'">
+    <div  [ngClass]="{'light':router.url=='/'}">
+        <div class="container px-2 head" [ngClass]="{'show-menu':showMenu}" *ngIf="router.url!='/sign-in'">
             <div class="d-flex justify-content-between align-items-sm-center">
                 <div class="d-flex align-items-center">
                     <div>
-                        <h1 routerLink="catalog">Satoga</h1>
-                        <!-- <h2>Винтовочные ложи высокого класса</h2> -->
+                        <h1 routerLink="/home">Satoga</h1>
+                        <h2>Винтовочные ложи высокого класса</h2>
                     </div>
                     <div class="d-none d-lg-block" style="margin-left: 6vw; margin-bottom: -3px;">
                         <app-menu></app-menu>    
@@ -41,7 +41,7 @@
         </div>
     </div>
     
-    <div class="px-2 px-sm-0" [ngStyle]="{'padding-top':router.url=='/catalog'?'3rem':'100px'}">
+    <div class="px-2 px-sm-0" [ngStyle]="{'padding-top':router.url=='/'?'0':'100px'}">
         <router-outlet></router-outlet>
     </div>
     
@@ -51,9 +51,9 @@
 </div>
 
 <div class="bkg">
-    <div class="bkg bkg-img" *ngIf="router.url=='/catalog'"></div>
-    <div class="bkg bkg-img" *ngIf="router.url=='/catalog'"></div>
-    <div class="bkg bkg-img" *ngIf="router.url=='/catalog'"></div>
+    <div class="bkg bkg-img" *ngIf="router.url=='/'"></div>
+    <div class="bkg bkg-img" *ngIf="router.url=='/'"></div>
+    <div class="bkg bkg-img" *ngIf="router.url=='/'"></div>
 </div>
 
 

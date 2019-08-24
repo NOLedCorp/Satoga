@@ -9,10 +9,12 @@ import { SectionComponent } from './section/section.component';
 import { ProductComponent } from './product/product.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SearchComponent } from './search/search.component';
+import { CatalogPageComponent } from './catalog-page/catalog-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo:'catalog', pathMatch: 'full'},
-  { path: 'catalog', component: HomeComponent},
+  { path: 'home', redirectTo: ''},
+  { path: '', component: HomeComponent, pathMatch: 'full'},
+  { path: 'catalog', component: CatalogPageComponent},
   { path: 'articles', component: ArticlesComponent},
   { path: 'gallery', component: GalleryComponent},
   { path: 'videos', component: VideosComponent},

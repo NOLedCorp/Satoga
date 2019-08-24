@@ -47,6 +47,7 @@ import { SearchComponent } from './search/search.component';
 import { AlertDirective } from './directives/alert.directive';
 import { BricksComponent } from './bricks/bricks.component';
 import { FileLoaderComponent } from './file-loader/file-loader.component';
+import { CatalogPageComponent } from './catalog-page/catalog-page.component';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { FileLoaderComponent } from './file-loader/file-loader.component';
     SearchComponent,
     AlertDirective,
     BricksComponent,
-    FileLoaderComponent
+    FileLoaderComponent,
+    CatalogPageComponent
   ],
   imports: [
     BrowserModule,
