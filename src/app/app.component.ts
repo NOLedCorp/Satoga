@@ -10,8 +10,16 @@ import { UserService } from './services/user.service';
 export class AppComponent {
   title = 'Satoga';
   showSearch = false;
+  showMenu = false;
   @HostListener('document:keydown.control.m') doSth(){
     this.router.navigate(['/sign-in']);
+  }
+  @HostListener('document:scroll', ['$event']) doScroll($event){
+    if(window.pageYOffset>0){
+      this.showMenu = true;
+    }else{
+      this.showMenu = false;
+    }
   }
   constructor(public router:Router, public us:UserService){
     this.router.events.subscribe((evt) => {

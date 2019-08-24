@@ -1,13 +1,14 @@
 @import "../../colors.less";
     .item{
-        margin:20px 5px;
+        margin:15px;
         display: flex;
         padding: 16px;
         flex-direction: column;
         min-width: 250px;
         justify-content: flex-end;
         align-items: flex-start;
-        width: 24%; 
+        width: calc(25% - 30px); 
+        border-radius: 10px;
         img{
             width: 100%;
             
@@ -22,19 +23,19 @@
             &~span{
                 margin-bottom: 20px;
             }
-            &:after{
-                content: '';
-                display: block;
-                position: absolute;
-                transition: 0.3s;
-                bottom: -5px;
-                height: 1px;
-                width: 40px;
-                background-color: @gray;
-            }
-            &:hover:after{
-                width:100%;
-            }
+            // &:after{
+            //     content: '';
+            //     display: block;
+            //     position: absolute;
+            //     transition: 0.3s;
+            //     bottom: -5px;
+            //     height: 1px;
+            //     width: 40px;
+            //     background-color: @gray;
+            // }
+            // &:hover:after{
+            //     width:100%;
+            // }
         }
         i.fa-plus{
             font-size: 50px;
@@ -65,6 +66,9 @@
 .sort{
     display: flex;
     justify-content: flex-end;
+    color: #fff;
+    margin-right: 15px;
+    font-size: 24px;
     
     i{
         margin-left: 5px;
@@ -76,4 +80,10 @@
             text-decoration: underline;
         }
     }
+}
+
+.header{
+    font-size: 60px;
+    color: #fff;
+    margin-left: 15px;
 }

@@ -24,16 +24,15 @@
 }
 .light{
     background: linear-gradient(to top, #ffffff00, rgba(255, 255, 255, 0.829));
-    h1,h2{
-        color: rgb(255, 255, 255);
-        text-shadow: 0 0 5px rgba(0, 0, 0, 0.678);
-    }
+    // h1,h2{
+    //     color: rgb(255, 255, 255);
+    //     text-shadow: 0 0 5px rgba(0, 0, 0, 0.678);
+    // }
 }
 .container{
-    padding-top: 60px;
-    padding-bottom: 0;
+    padding-top: 10px;
    
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     &>.d-flex{
         position: relative;
     }
@@ -56,10 +55,12 @@
         margin-bottom: 0;
     }
     fieldset{
-        position: relative;
+        position: absolute;
+        right: 0;
         input{
             max-width: 300px;
             padding-right: 40px;
+            border: none;
         }
         button, div.btn{
             position: absolute;
@@ -75,7 +76,41 @@
         div.btn{
             display: none;
         }
+        
     }
+
+    .search{
+        position: relative;
+        width: 40px;
+        height: 40px;
+        &.active, &:focus-within{
+            
+                input{
+                    border: 1px solid lightgray !important;
+                    background-color: #fff;
+                    width: 230px !important;
+                    padding-right: 40px !important;
+                    padding-left: 10px !important;
+                    transform-origin: left;
+                    color: black;
+                }
+                div.btn{
+                    display: none !important;
+                }
+                button.btn{
+                    display: block !important;
+                }
+            }
+        input{
+            transition: 0.3s;
+            width: 40px !important;
+            padding: 0 !important;
+            color: #fff;
+            
+        }
+    }
+    
+
     a{
         color: black;
         text-decoration: none;
@@ -90,6 +125,21 @@
         
     }
     
+}
+
+.head{
+    position: fixed;
+    z-index: 100;
+    box-shadow: 0 0 20px rgb(75, 75, 75);
+    height: 62px;
+    top: -75px;
+    left: 0;
+    width: 100%;
+    animation: down 1s forwards;
+}
+
+.show-menu{
+    top:0;
 }
 
 .bkg{
@@ -202,5 +252,14 @@
     }
     100%{
         opacity: 1;
+    }
+}
+
+@keyframes down{
+    0%{
+        top: -75px;
+    }
+    100%{
+        top: 0;
     }
 }

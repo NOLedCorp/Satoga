@@ -1,13 +1,13 @@
 @import "../../colors.less";
 .carousel{
-    position: relative;
-    padding-top: 200px;     
+    position: relative;   
+    padding-top: 100px;
     .carousel-header{
-        position: absolute;
-        z-index: 100;
-        left: 60%;
-        top: 0;
-        width: 50%;
+        position: relative;
+        z-index: 50;
+        margin-left: 100px;
+        
+        width: 70%;
         overflow: hidden;
         height: 200px;
         display: flex;
@@ -16,20 +16,19 @@
             text-transform: uppercase;
         }
         h2{
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 50px;
             font-weight: 600;
             max-height: 150px;
-            color: rgb(233, 233, 233);
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
         .slide{
             top: 0;
             flex-direction: column;
             align-items: flex-start;
-            width: 40vw;
 
             .btn{
-                background-color: @trans-green; 
+                margin-top: 20px;
+                background-color: @dark; 
                 color: #fff;
             }
         }
@@ -64,7 +63,7 @@
             }
 
             polyline{
-                stroke: @green;
+                stroke: @dark;
             }
         }
     }

@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.ls.showLoad = true;
-    this.ss.getGoods().subscribe(items => {
+    this.ss.getGoods(8).subscribe(items => {
       if(items && items.length>0){
         this.items = items;
       }
@@ -102,8 +102,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  showCatalog(){
-    let catalog = document.getElementsByClassName('catalog')[0];
+  showSections(){
+    let catalog = document.getElementsByClassName('moveto')[0];
     catalog.scrollIntoView({
       behavior: "smooth",
       block: "start",

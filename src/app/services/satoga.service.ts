@@ -17,8 +17,8 @@ export class SatogaService{
         return this.http.get<any>(this.baseUrl + 'Key=get-sections');
     }
 
-    public getGoods(){
-        return this.http.get<any>(this.baseUrl + 'Key=get-goods').pipe(
+    public getGoods(limit = null){
+        return this.http.get<any>(this.baseUrl + 'Key=get-goods&Limit='+limit).pipe(
             tap(goods => {
                 console.log(goods)
                 goods.forEach(element => {
