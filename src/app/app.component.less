@@ -130,13 +130,15 @@
 .head{
     position: fixed;
     z-index: 100;
-    padding-bottom: 15px;
     // box-shadow: 0 0 20px rgb(75, 75, 75);
     top: -75px;
     // padding-top: 60px;
     left: 0;
-    width: 100%;
+    width: 100vw !important;
     animation: down 1s forwards;
+    .container{
+        padding-bottom: 15px;
+    }
 }
 
 .show-menu{

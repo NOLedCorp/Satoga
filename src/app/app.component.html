@@ -5,37 +5,40 @@
         <div class="btn btn-link" (click)="us.exit()">Выйти</div>
     </div>
     <div  [ngClass]="{'light':router.url=='/'}">
-        <div class="container px-2 head" [ngClass]="{'show-menu':showMenu}" *ngIf="router.url!='/sign-in'">
-            <div class="d-flex justify-content-between align-items-sm-center">
-                <div class="d-flex align-items-center">
-                    <div>
-                        <h1 routerLink="/home">Satoga</h1>
-                        <h2>Винтовочные ложи высокого класса</h2>
+        <div class="px-2 head" [ngClass]="{'show-menu':showMenu}" *ngIf="router.url!='/sign-in'">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-sm-center">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h1 routerLink="/home">Satoga</h1>
+                            <h2>Винтовочные ложи высокого класса</h2>
+                        </div>
+                        <div class="d-none d-lg-block" style="margin-left: 6vw; margin-bottom: -3px;">
+                            <app-menu></app-menu>    
+                        </div>
                     </div>
-                    <div class="d-none d-lg-block" style="margin-left: 6vw; margin-bottom: -3px;">
-                        <app-menu></app-menu>    
+                    
+                    
+                    <div class="d-flex align-items-center">
+                        <div class="search mr-3" [ngClass]="{'active':showSearch}" tabindex="0" (blur)="close()">
+                            <fieldset class="d-flex">
+                                <input type="text" class="form-control" #str >
+                                <button class="btn" (click)="search(str.value)"><i class="fas fa-search" aria-hidden="true" ></i></button>
+                                <div class="btn" (click)="show()"><i class="fas fa-search" aria-hidden="true" ></i></div>
+                            </fieldset>
+                        </div>
+                        <a class="d-none d-lg-block mr-3" style=" white-space: nowrap; z-index:1000;" href="tel:+79162278742">+7 (916) 227-87-42</a>
+                        <!-- <div class="mr-2" class="btn rounded-pill btn-success text-white" (click)="ms.open('form')"><span>Оставить заявку</span></div> -->
                     </div>
+                    
                 </div>
                 
-                
-                <div class="d-flex align-items-center">
-                    <div class="search mr-3" [ngClass]="{'active':showSearch}" tabindex="0" (blur)="close()">
-                        <fieldset class="d-flex">
-                            <input type="text" class="form-control" #str >
-                            <button class="btn" (click)="search(str.value)"><i class="fas fa-search" aria-hidden="true" ></i></button>
-                            <div class="btn" (click)="show()"><i class="fas fa-search" aria-hidden="true" ></i></div>
-                        </fieldset>
-                    </div>
-                    <a class="d-none d-lg-block mr-3" style=" white-space: nowrap; z-index:1000;" href="tel:+79162278742">+7 (916) 227-87-42</a>
-                    <!-- <div class="mr-2" class="btn rounded-pill btn-success text-white" (click)="ms.open('form')"><span>Оставить заявку</span></div> -->
+                <div class="menu">
+                    <app-menu></app-menu>
+                    <a style="z-index:1000; margin-bottom: 5px;" href="tel:+79162278742">+7 (916) 227-87-42</a>
                 </div>
-                
             </div>
             
-            <div class="menu">
-                <app-menu></app-menu>
-                <a style="z-index:1000; margin-bottom: 5px;" href="tel:+79162278742">+7 (916) 227-87-42</a>
-            </div>
             
             
         </div>
