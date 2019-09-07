@@ -13,7 +13,7 @@
   </div>
   <div class="form-group" *ngIf="goods.length">
     <label [ngClass]="{'text-danger':(submitted && f.GoodId.errors)}" for="DES">Товар</label>
-    <prog-select [errors]="submitted && f.GoodId.errors" [items]="goods" formControlName="GoodId" id="GoodId" #GoodId></prog-select>
+    <prog-select [errors]="submitted && f.GoodId.errors" (change)="upd(GoodId)" [items]="goods" formControlName="GoodId" id="GoodId" #GoodId></prog-select>
     <small  class="form-text text-danger" *ngIf="submitted && f.GoodId.errors && f.GoodId.errors.required">Укажите товар</small>
   </div>
   <div class="form-group">
